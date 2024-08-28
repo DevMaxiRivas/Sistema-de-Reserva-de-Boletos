@@ -1,0 +1,476 @@
+{% include 'public/base.html' %}
+{% load static%}
+{% load i18n %}
+
+{% block content %}
+<div class="background_ps"></div>
+<section class="main_ps section_ps form-register font-black">
+    <div class="container mt-2 m-0 p-0">
+        <h2 class="title_ps text-center">{% translate "Reservaciones de Boletos" %}</h2>
+    </div>
+    <form id="reservaForm">
+        {% csrf_token %}
+        {% if user.is_authenticated %}
+        <input type="hidden" id="id-user" value="{{ user.id }}">
+        {% endif %}
+        <div id="pasajeros">
+            <!-- Aquí se agregarán dinámicamente los formularios de pasajeros -->
+        </div>
+        <div class="d-flex justify-content-center row mx-auto my-2">
+            <div class="card top-50 start-50 translate-middle h-auto d-inline-block w-auto shadow bg-white rounded">
+                <div class="card-body">
+                    <label for="email" class="form-label">
+                        {% translate "Correo Electrónico para envio de boletos" %}</label>
+                    <input type="email" class="form-control" id="email" required>
+                </div>
+                <div class="d-flex justify-content-center mb-3">
+                    <button type="button" class="btn btn-primary mr-1" id="agregarPasajero">
+                        {% translate "Agregar Pasajero"%}
+                    </button>
+                    <button type="submit" class="btn btn-success ml-1">{% translate "Reservar Boletos" %}</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>
+{% include 'public/footer.html' %}
+
+<!-- Modal para crear un nuevo pasajero -->
+<div id="passenger-modal" class="modal fade font-black" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">{% translate "Información del Pasajero" %}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="new-passenger-form-container"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        let contadorPasajeros = 0;
+
+        function reiniciarInfoRecorrido(informacion_horario) {
+            informacion_horario.find('.horario_espera').empty().text('{% translate "Hora de Embarque" %}');
+            informacion_horario.find('.horario_salida').empty().text('{% translate "Hora Salida" %}');
+            informacion_horario.find('.estacion_salida').empty().text('{% translate "Estación Salida" %}');
+            informacion_horario.find('.estacion_llegada').empty().text('{% translate "Estación Llegada" %}');
+            informacion_horario.find('.horario_partida').empty().text('{% translate "Hora Partida" %}');
+            informacion_horario.find('.horario_llegada').empty().text('{% translate "Hora Llegada" %}');
+        }
+
+        function reiniciarSeleccionAsiento(asientoSelect) {
+            asientoSelect.empty();
+            asientoSelect.append($('<option></option>').val("").text("{% translate 'Seleccione un Asiento' %}"));
+            asientoSelect.prop('disabled', true);
+        }
+
+        function reiniciarSeleccionCategoria(categoriaSelect) {
+            categoriaSelect.empty();
+            categoriaSelect.append($('<option></option>').val("").text("{% translate 'Seleccione una Categoria' %}"));
+            categoriaSelect.prop('disabled', true);
+        }
+
+        function reiniciarSeleccionHorario(horarioSelect) {
+            horarioSelect.empty();
+            horarioSelect.append($('<option></option>').val("").text("{% translate 'Seleccione una Horario' %}"));
+            horarioSelect.prop('disabled', true);
+        }
+
+        function cargarTiposRecorrido(select) {
+            $.get('{% url "api_types_journey" %}', function (data) {
+                select.empty();
+                // select.append($('<option></option>').val("").text("{% translate 'Seleccione un tipo de recorrido' %}"));
+                data.forEach(function (tipo) {
+                    select.append($('<option></option>').val(tipo[0]).text(tipo[1]));
+                });
+            });
+        }
+
+        function cargarHorarios(fecha, tipoRecorrido, select, informacion_horario) {
+            $.get('{% url "api_journey_per_date" %}', {
+                fecha: fecha,
+                tipo_recorrido: tipoRecorrido
+            }, function (data) {
+                select.empty();
+                if (data.length > 0) {
+                    select.append($('<option></option>').val("").text("{% translate 'Seleccione un Horario' %}"));
+                    data.forEach(function (horario) {
+                        select.append($('<option></option>').val(horario.id).text(horario.departure_time));
+                    });
+                } else {
+                    select.append($('<option></option>').val("").text("{% translate 'Sin horarios disponibles' %}"));
+                    select.prop('disabled', true);
+                    reiniciarInfoRecorrido(informacion_horario);
+                }
+            });
+        }
+
+        function cargarDetallesHorario(horario, element) {
+            $.get('{% url "api_get_data_schedule" %}', {
+                horario_id: horario,
+            }, function (data) {
+                let info = data.horario;
+                element.find('.horario_espera').empty().text(info.HorarioEspera);
+                element.find('.horario_salida').empty().text(info.HorarioSalida);
+                element.find('.estacion_salida').empty().text(info.EstacionSalida);
+                element.find('.estacion_llegada').empty().text(info.EstacionLlegada);
+                element.find('.horario_partida').empty().text(info.HorarioPartida);
+                element.find('.horario_llegada').empty().text(info.HorarioLlegada);
+            });
+        }
+        function cargarCategorias(tipoRecorrido, select) {
+            $.get('{% url "api_price_journey" %}', {
+                tipo_recorrido: tipoRecorrido
+            }, function (data) {
+                select.empty();
+                if (data.length > 0) {
+                    select.append($('<option></option>').val("").text("{% translate 'Seleccione una Categoria' %}"));
+                    data.forEach(function (categoria) {
+                        select.append($('<option></option>').val(categoria.id).text(categoria.category + ' - $' + categoria.price));
+                    });
+                } else {
+                    select.append($('<option></option>').val("").text("{% translate 'Sin recorridos disponibles' %}"));
+                }
+                select.prop('disabled', false);
+            });
+        }
+
+        function cargarAsientos(categoria, horario, select) {
+            $.get('{% url "api_available_seats_per_schedule" %}', {
+                categoria: categoria,
+                horario: horario
+            }, function (data) {
+                if (data.length > 0) {
+                    select.empty();
+                    select.append($('<option></option>').val("").text("{% translate 'Seleccione un Asiento' %}"));
+                    data.forEach(function (asiento) {
+                        select.append($('<option></option>').val(asiento.id).text(asiento.numero));
+                    });
+                    select.prop('disabled', false);
+                } else {
+                    select.empty();
+                    select.append($('<option></option>').val("").text("{% translate 'Sin asientos disponibles' %}"));
+                    select.prop('disabled', true);
+                }
+            });
+        }
+
+        function agregarPasajero() {
+            contadorPasajeros++;
+            let pasajeroHtml = `
+                    <div class="pasajero-form mb-4" data-pasajero="${contadorPasajeros}">
+                        <div class="d-flex justify-content-center row mx-auto my-4">
+                            <div class="card d-inline-block h-auto w-auto p-3 mt-3 shadow bg-white rounded">
+                                <div class="card-body">
+                                    <div>
+                                        <h6 class="display-5">{% translate "N° de Boleto" %} X</h6>
+                                    </div>
+                                    <div>
+                                        <span class="display-4">
+                                            <input type="text" placeholder="Ingrese DNI/Passaporte"
+                                                class="form-control-plaintext form-control-lg dni_o_pasaporte" required>
+                                        </span>
+                                    </div>
+                                    <div class=" mt-2">
+                                        <span class="d-block">
+                                            {% translate "Recorrido" %}:
+                                            <select class="form-select tipo-recorrido" required>
+                                                <option value>{% translate "Cargando Tipos de Recorrido" %}</option>
+                                            </select>
+                                        </span>
+                                        <div>
+                                            <div class="form-row my-3">
+                                                <div class="col">
+                                                    <label for="fecha">{% translate "Fecha" %}</label>
+                                                    <input type="date" class=" m-0 p-0 form-control-plaintext fecha"
+                                                        required>
+                                                </div>
+                                                <div class="col">
+                                                    <label for="horario">{% translate "Horarios Disponibles" %}</label>
+                                                    <select class="form-select horario" required disabled>
+                                                        <option value>{% translate "Seleccione un Horario" %}</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex align-middle">
+                                                <img style="width: auto; height: 45px;"
+                                                    src="{% static 'img/TrenALasNubesLogo.png' %}" alt="Logo">
+                                                <div>
+                                                    <span>{% translate "Operado por" %}</span>
+                                                    <p color="#5C5C5C" data-darkreader-inline-color=""
+                                                        style="--darkreader-inline-color: #aea79c;">
+                                                        <strong>Tren A Las Nubes</strong>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h2>{% translate "Asiento" %}</h2>
+                                            <div>
+                                                <div class="d-flex justify-content-between">
+                                                    <select class="form-select categoria"
+                                                        style="--darkreader-inline-color: #aea79c;" required disabled>
+                                                        <option value>{% translate "Categoria de Asiento" %}</option>
+                                                    </select>
+                                                    <p>{% translate "Reserva" %} X</p>
+                                                </div>
+                                                <div class="d-block">
+                                                    <select class="m-0 p-0 form-control-lg form-select asiento" required
+                                                        disabled>
+                                                        <option value>{% translate 'Seleccione un Asiento' %}</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="informacion_horario">
+                                        <div>
+                                        <span><strong class="display-4">
+                                                {% translate "Información del Embarque" %}
+                                            </strong></span>
+                                        <div class="container m-4">
+                                            <div class="row">
+                                                <span class="col-6">
+                                                    {% translate "En puerta de embarque" %}
+                                                </span>
+                                                <span class="col-6">
+                                                    {% translate "El embarque finalizará a las" %}
+                                                </span>
+                                            </div>
+                                            <div class="row">
+                                                <span class="col-6">
+                                                    <h4 class="text-end horario_espera">
+                                                        {% translate "Hora de Embarque" %}
+                                                    </h4>
+                                                </span>
+                                                <span class="col-6">
+                                                    <h4 class="text-end horario_salida">
+                                                        {% translate "Hora de Salida" %}
+                                                    </h4>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <span><strong class="display-4">
+                                                {% translate "Paradas" %}
+                                            </strong></span>
+                                        <div class="container m-4">
+                                            <div class="row">
+                                                <span class="col-6 estacion_salida">
+                                                    {% translate "Estacion de Salida" %}
+                                                </span>
+                                                <span class="col-6 estacion_llegada">
+                                                    {% translate "Estacion de Llegada" %}
+                                                </span>
+                                            </div>
+                                            <div class="row">
+                                                <span class="col-6">
+                                                    <h4 class="horario_partida">
+                                                        {% translate "Hora de Partida" %}
+                                                    </h4>
+                                                </span>
+                                                <span class="col-6">
+                                                    <h4 class="horario_llegada">
+                                                        {% translate "Hora de Llegada" %}
+                                                    </h4>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <button type="button" class="btn btn-danger eliminar-pasajero">
+                                            {% translate "Eliminar Pasajero" %}
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            $('#pasajeros').append(pasajeroHtml);
+
+            let nuevoSelect = $(`[data-pasajero="${contadorPasajeros}"]`).find('.tipo-recorrido');
+            cargarTiposRecorrido(nuevoSelect);
+        }
+
+        $('#agregarPasajero').click(agregarPasajero);
+
+        $(document).on('change', '.fecha, .tipo-recorrido', function () {
+            let pasajeroForm = $(this).closest('.pasajero-form');
+            let fecha = pasajeroForm.find('.fecha').val();
+            let tipoRecorrido = pasajeroForm.find('.tipo-recorrido').val();
+            let horarioSelect = pasajeroForm.find('.horario');
+            let asientoSelect = pasajeroForm.find('.asiento');
+            let categoriaSelect = pasajeroForm.find('.categoria');
+            let informacion_horario = pasajeroForm.find('.informacion_horario');
+
+            if (fecha && tipoRecorrido) {
+                reiniciarSeleccionCategoria(categoriaSelect);
+
+                horarioSelect.prop('disabled', false);
+                cargarHorarios(fecha, tipoRecorrido, horarioSelect, informacion_horario);
+            } else {
+                reiniciarSeleccionHorario(horarioSelect);
+            }
+
+            // Resetear y deshabilitar la selección de asientos
+            reiniciarSeleccionAsiento(asientoSelect);
+        });
+
+        $(document).on('change', '.horario', function () {
+            let pasajeroForm = $(this).closest('.pasajero-form');
+            let fecha = pasajeroForm.find('.fecha').val();
+            let tipoRecorrido = pasajeroForm.find('.tipo-recorrido').val();
+            let horario = $(this).val();
+            let categoriaSelect = pasajeroForm.find('.categoria');
+            let asientoSelect = pasajeroForm.find('.asiento');
+            let informacion_horario = pasajeroForm.find('.informacion_horario');
+
+            reiniciarSeleccionAsiento(asientoSelect);
+
+            if (fecha && horario && horario != '') {
+                cargarCategorias(tipoRecorrido, categoriaSelect);
+                cargarDetallesHorario(horario, informacion_horario);
+            } else {
+
+                reiniciarInfoRecorrido(informacion_horario);
+                reiniciarSeleccionCategoria(categoriaSelect);
+
+            }
+        });
+
+        $(document).on('change', '.categoria', function () {
+            let pasajeroForm = $(this).closest('.pasajero-form');
+            let categoria = $(this).val();
+            let horario = pasajeroForm.find('.horario').val();
+            let asientoSelect = pasajeroForm.find('.asiento');
+            if (categoria && horario && horario != "") {
+                cargarAsientos(categoria, horario, asientoSelect);
+            } else {
+                reiniciarSeleccionCategoria($(this));
+                reiniciarSeleccionAsiento(asientoSelect);
+            }
+        });
+
+        $(document).on('click', '.eliminar-pasajero', function () {
+            $(this).closest('.pasajero-form').remove();
+            contadorPasajeros--;
+        });
+
+
+        function openCreatePassengerModal(dni_or_passport) {
+            $.get('{% url "create_passenger" %}', {
+                dni_or_passport: dni_or_passport
+            }, function (data) {
+                $('#new-passenger-form-container').html(data);
+                $('#passenger-modal').modal('show');
+            }).fail(function () {
+                alert('{% translate "Fallo al cargar el modal. Por favor, intenta de nuevo" %}.');
+            });
+        }
+
+        $(document).on('blur', '.dni_o_pasaporte', function () {
+            var dni_or_passport = $(this).val();
+            var inputField = $(this); // Referencia al campo de entrada
+            if (dni_or_passport) {
+                openCreatePassengerModal(dni_or_passport);
+            }
+        });
+
+        $('#reservaForm').submit(function (e) {
+            e.preventDefault();
+
+            id_user = $('#id-user').val();
+            let reserva;
+
+            if (id_user === undefined) {
+                reserva = {
+                    email: $('#email').val(),
+                    pasajeros: []
+                };
+            } else {
+                reserva = {
+                    email: $('#email').val(),
+                    id_user: id_user,
+                    pasajeros: []
+                };
+            }
+            let error_campos = false
+            // Obtener resultado
+            let list_categories = []
+
+            // Obtenemos los datos cargados por el usuario
+            $('.pasajero-form').each(function () {
+                let horario = $(this).find('.horario').val();
+                let asiento = $(this).find('.asiento').val();
+
+                if (horario == "" || asiento == "") {
+                    error_campos = true
+                    return alert('{% translate "Por favor, complete todos los campos" %}');
+                }
+
+                let pasajero = {
+                    tipoRecorrido: $(this).find('.tipo-recorrido').val(),
+                    fecha: $(this).find('.fecha').val(),
+                    horario: horario,
+                    asiento: asiento,
+                    dni_o_pasaporte: $(this).find('.dni_o_pasaporte').val()
+                };
+
+                let categoria = $(this).find('.categoria').val();
+                list_categories.push(categoria)
+
+
+                reserva.pasajeros.push(pasajero);
+            });
+
+            if (reserva.pasajeros.length == 0 && !error_campos) {
+                alert('{% translate "Por favor, agrega al menos un pasajero" %}');
+            }
+
+            // Guardamos la reserva localmente
+            localStorage.setItem('data_reserva', JSON.stringify(reserva));
+
+            // Generamos el JSON para enviarlo a la API
+            data = {
+                'list_categories': list_categories
+            }
+
+            // Llamar a la API para procesar la reserva
+            $.ajax({
+                url: '{% url "api_reserve_tickets" %}',
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                method: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(data),
+                success: function (response) {
+                    if (response.success) {
+                        window.location.href = response.init_point;
+                    } else {
+                        console.error('{% translate "Error en la respuesta:" %}', response);
+                        alert('{% translate "Hubo un error al procesar su pago" %}');
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.error('{% translate "Error en la petición:" %}', error);
+                    alert('{% translate "Hubo un error al procesar su solicitud" %}');
+                }
+            });
+        });
+
+        // Agregar el primer pasajero al cargar la página
+        agregarPasajero();
+    });
+</script>
+{% endblock %}

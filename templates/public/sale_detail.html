@@ -1,0 +1,123 @@
+{% load i18n %}
+{% include 'public/base.html' %}
+
+{% block content %}
+<section class="section_ps home_ps form-register font-black">
+    <div class="card container mt-5 center-text">
+        <h1 class="mb-3 mt-3">{% translate "Detalles de Venta" %}</h1>
+        <h4>{% translate "Venta" %} ID: {{ sale.id }}</h4>
+        <p>Total: ${{ sale.price }}</p>
+        <p>{% translate "Fecha" %}: {{ sale.purchase_date }}</p>
+
+        {% if tickets %}
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>ID {% translate "Boleto" %}</th>
+                    <th>{% translate "DNI/Pasaporte" %}</th>
+                    <th>{% translate "Asiento" %}</th>
+                    <th>{% translate "Clase" %}</th>
+                    <th>{% translate "Recorrido" %}</th>
+                    <th>{% translate "Acción" %}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ticket in tickets %}
+                <tr>
+                    <td>{{ ticket.id }}</td>
+                    <td>{{ ticket.passenger.dni_or_passport }}</td>
+                    <td>{{ ticket.seat.seat_number }}</td>
+                    <td>{{ ticket.getCategorySeat }}</td>
+                    <td>{{ ticket.schedule }}</td>
+                    <td>
+                        <a class="btn btn-danger btn-sm mr-2 b mb-1" href="" data-toggle="modal"
+                            data-target="#exampleModal{{ticket.id}}">
+                            {% translate "Cambiar de Pasajero" %}
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        {% for ticket in tickets %}
+        {% include 'public/change_passenger_modal.html' %}
+        {% endfor %}
+
+        {% else %}
+        <p>{% translate "No hay boletos asociados a esta venta" %}.</p>
+        {% endif %}
+    </div>
+</section>
+<!-- Modal para crear un nuevo pasajero -->
+<div id="passenger-modal" class="modal fade font-black" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">{% translate "Información del Pasajero" %}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="new-passenger-form-container"></div>
+            </div>
+        </div>
+    </div>
+</div>
+{% include 'public/footer.html' %}
+
+<script>
+    function openCreatePassengerModal(dni_or_passport) {
+        $.get('{% url "create_passenger" %}', {
+            dni_or_passport: dni_or_passport
+        }, function (data) {
+            $('#new-passenger-form-container').html(data);
+            $('#passenger-modal').modal('show');
+        }).fail(function () {
+            alert('{% translate "Fallo al cargar el modal. Por favor, intenta de nuevo" %}.');
+        });
+    }
+
+    $(document).on('blur', '.dni_o_pasaporte', function () {
+        var dni_or_passport = $(this).val();
+        var inputField = $(this); // Referencia al campo de entrada
+        if (dni_or_passport) {
+            openCreatePassengerModal(dni_or_passport);
+        }
+    });
+
+    // Cambiar de pasajero
+    $(document).ready(function () {
+        $('.change_passenger_form').on('submit', function (e) {
+            e.preventDefault(); // Evita el envío tradicional del formulario
+            let id_ticket = $(this).find('.ticket_id').val();
+            let dni_o_pasaporte = $(this).find('.dni_o_pasaporte').val();
+            const data = {
+                'id_ticket': id_ticket,
+                'dni_or_passport': dni_o_pasaporte
+            }
+
+            $.ajax({
+                url: '{% url "change_passenger_ticket" %}',
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                method: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(data),
+                success: function (response) {
+                    if (response.success) {
+                        location.reload();
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.error('{% translate "Error en la petición:" %}', error);
+                    alert('{% translate "Hubo un error al procesar su solicitud" %}');
+                }
+            });
+        });
+    });
+
+</script>
+{% endblock %}

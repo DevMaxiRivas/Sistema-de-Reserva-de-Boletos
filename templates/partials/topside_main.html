@@ -1,0 +1,51 @@
+{% load i18n %}
+<div class="row">
+    <div class="col-md-12 mt-4">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                {% trans 'Panel de Control' %}
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        <a class="text-decoration-none text-dark" href="{% url 'dashboard-supplies' %}">
+                            <div class="card my-card shadow">
+                                <div class="card-body text-center">
+                                    <h4>{% translate "Insumos" %} <i class="ri-store-2-line"></i></h4>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-3">
+                        <a class="text-decoration-none text-dark" href="{% url 'dashboard-finances' %}">
+                            <div class="card my-card shadow">
+                                <div class="card-body text-center">
+                                    <h4>{% translate "Finanzas" %} <i class="ri-money-dollar-box-line"></i></h4>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-3">
+                        <a class="text-decoration-none text-dark" href="{% url 'dashboard-journeys' %}">
+                            <div class="card my-card shadow">
+                                <div class="card-body text-center">
+                                    <h4>{% translate "Recorridos" %} <i class="ri-train-fill"></i></h4>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-3">
+                        <a class="text-decoration-none text-dark" href="{% url 'dashboard-users' %}">
+                            <div class="card my-card shadow">
+                                <div class="card-body text-center">
+                                    <h4>{% translate "Usuarios" %} <i class="ri-group-fill"></i></h4>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

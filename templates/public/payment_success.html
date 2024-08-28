@@ -1,0 +1,57 @@
+{% load i18n %}
+{% include 'public/base.html' %}
+
+<section class="section_ps home_ps form-register">
+    <div class="container mt-5 center-text">
+        {% block content %}
+        <h2>{% translate "¡Compra exitosa!" %}</h2>
+        <p>{% translate "Gracias por su compra. La operación se realizó correctamente." %}</p>
+        <a href="{% url 'home' %}" class="btn btn-primary">{% translate "Volver al inicio" %}</a>
+        {% endblock %}
+    </div>
+</section>
+{% include 'public/footer.html' %}
+<script>
+    function obtenerParametrosPorNombre(name) {
+        const url = new URL(window.location.href);
+        const param = url.searchParams.get(name);
+        return param;
+    }
+
+    $(document).ready(function () {
+        if (localStorage.getItem('data_reserva')) {
+            const reservaData = localStorage.getItem('data_reserva');
+            localStorage.removeItem('data_reserva');
+            const reserva = JSON.parse(reservaData);
+
+            let pago = {
+                "payment_id": obtenerParametrosPorNombre("payment_id"),
+                "payment_type": obtenerParametrosPorNombre("payment_type"),
+                "payment_status": obtenerParametrosPorNombre("status")
+            }
+
+            reserva["detalles_pago"] = pago;
+
+            console.log(reserva);
+            $.ajax({
+                url: '{% url "payment_success" %}',
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                method: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(reserva),
+                success: function (response) {
+                    if (!response.success) {
+                        console.error('{% translate "Error en la respuesta:" %}', response);
+                        alert('{% translate "Hubo un error al procesar su pago" %}');
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.error('{% translate "Error en la petición:" %}', error);
+                    alert('{% translate "Hubo un error al procesar su solicitud" %}');
+                }
+            });
+        }
+    });
+</script>

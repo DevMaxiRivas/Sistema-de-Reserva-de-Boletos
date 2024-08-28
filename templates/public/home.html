@@ -1,0 +1,149 @@
+{% load i18n %}
+{% include 'public/base.html' %}
+{% block content %}
+<section class="section_ps home_ps">
+    <div class="home-text">
+        {% blocktrans %}
+        <h5>Vamos</h5>
+        <h1>Planifique su viaje<br>con nosotros</h1>
+        <p>
+            El recorrido del Tren a las Nubes incluye salida en vehículo desde la ciudad de Salta, recorriendo por
+            la RN 51 las
+            localidades de Campo Quijano y Gobernador Solá hasta llegar al paraje El Alfarcito donde está previsto
+            un desayuno
+            campestre con productos locales elaborados por las comunidades de la zona.
+        </p>
+        {% endblocktrans %}
+        <a href="{% url 'tickets_reserve' %}" class="btn_ps">{% translate "Reserve su boleto" %}</a>
+    </div>
+</section>
+
+<section class="section_ps feature">
+    {% blocktrans %}
+    <div class="center-text">
+        <h2> Atracciones </h2>
+    </div>
+    {% endblocktrans %}
+    <div class="feature-content">
+        <div class="row-ps">
+            <div class="row-img">
+                <img src="static/img/nap1.jpg" alt="">
+            </div>
+            <h4 class="row-title-ps">{% translate "Museo Regional <br> Andino" %}</h4>
+        </div>
+        <div class="row-ps">
+            <div class="row-img">
+                <img src="static/img/nap2.jpg" alt="">
+            </div>
+            <h4 class="row-title-ps">{% translate "Mercado <br> Artesanal" %}</h4>
+        </div>
+        <div class="row-ps">
+            <div class="row-img">
+                <img src="static/img/nap3.jpg" alt="">
+            </div>
+            <h4 class="row-title-ps">{% translate "Paseo Anatolio y <br> sus llamas" %}<br></h4>
+        </div>
+        <div class="row-ps">
+            <div class="row-img">
+                <img src="static/img/nap4.jpg" alt="">
+            </div>
+            <h4 class="row-title-ps">{% translate "Paseo <br> Thuru Mmaki" %}</h4>
+        </div>
+        <div class="row-ps">
+            <div class="row-img">
+                <img src="static/img/nap5.jpg" alt="">
+            </div>
+            <h4 class="row-title-ps">{% translate "Iglesia San Antonio <br> de Padua" %}</h4>
+        </div>
+    </div>
+</section>
+
+<section class="section_ps holiday">
+    <div class="holiday-img">
+        <img src="static/img/h1.png" alt="">
+    </div>
+    <div class="holiday-text">
+        {% blocktrans %}
+        <h5>Tren a las nubes</h5>
+        <h2>Tenga una experiencia inolvidable</h2>
+        <p>
+            Maravillese con las pintorescas y rústicas regiones por las que atraviesa, conociendo sus distinguidas
+            artesanías, museos, y su deliciosa gastronomía autóctona. <br>
+
+            El tren a las nubes se encuentra a 4.220 m.s.n.m. según cuenta la leyenda, entre los pobladores de la
+            zona, es el intermediario directo entre la tierra y los sueños, el responsable de que la Puna salteña
+            se fusione con el cielo.
+        </p>
+        {% endblocktrans %}
+        <a href="#" class="btn_ps">{% translate "Saber más" %}</a>
+    </div>
+</section>
+
+<section class="section_ps tour">
+    <div class="center-text">
+        <h2>{% translate "Servicios a bordo" %}</h2>
+    </div>
+    <div class="tour-content">
+        <div class="box">
+            <img src="static/img/t1.jpg" alt="">
+            {% blocktrans %}
+            <h6>Almuerzos</h6>
+            <h4>Amplia variedad para todos</h4>
+            {% endblocktrans %}
+        </div>
+        <div class="box">
+            <img src="static/img/t2.jpg" alt="">
+            {% blocktrans %}
+            <h6>Desayunos</h6>
+            <h4>Disfrute de la mejor comida</h4>
+            {% endblocktrans %}
+        </div>
+        <div class="box">
+            <img src="static/img/t3.jpg" alt="">
+            {% blocktrans %}
+            <h6>Mercancía</h6>
+            <h4>Llevese un recuerdo</h4>
+            {% endblocktrans %}
+        </div>
+    </div>
+    <div class="center-btn">
+        <a href="#" class="btn_ps">{% translate "Ver Más" %}</a>
+    </div>
+</section>
+
+<section class="section_ps Culture">
+    <div class="Culture-text">
+        {% blocktrans %}
+        <h5>Servicios</h5>
+        <h2>Incluidos en la excursión</h2>
+        <p>
+            <br> Tour guiado a cargo de anfitriones en carretera y a bordo del Tren.
+            <br> Desayuno y merienda campestre que consta de infusiones y aperitivos regionales.
+            <br> Ceremonia a la bandera en el Viaducto La Polvorilla.
+            <br> Traslados a los puntos de encuentro en el centro del pueblo arribado.
+            <br> Asistencia médica en carretera y a bordo del Tren a cargo de personal del SAMEC.
+            <br> Cada pasajero cuenta con una cobertura médica en caso de imprevistos.
+        </p>
+        {% endblocktrans %}
+        <a href="#" class="btn_ps">{% translate "Saber más" %}</a>
+    </div>
+    <div class="Culture-img">
+        <img src="static/img/c1.png" alt="">
+    </div>
+
+</section>
+
+<section class="section_ps newsletter">
+    <div class="newsletter-content">
+        <div class="newsletter-text">
+            <h2>{% translate "¿Promociones?" %}</h2>
+            <p>{% translate "Suscribase a nuestro boletín de noticias" %}</p>
+        </div>
+        <form action="">
+            <input type="email" placeholder='{% translate "Ingrese su correo electronico" %}' required>
+            <input type="submit" value='{% translate "Enviar" %}' class="btn_ps">
+        </form>
+    </div>
+</section>
+{% include 'public/footer.html' %}
+{% endblock %}

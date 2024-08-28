@@ -1,0 +1,50 @@
+{% load i18n %}
+<div class="row">
+    <div class="col-md-12 mt-4">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                {% trans 'Panel de Control' %}
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        <a class="text-decoration-none text-dark" href="{% url 'dashboard-passengers' %}">
+                            <div class="card my-card shadow">
+                                <div class="card-body text-center">
+                                    <h4>{% translate "Pasajeros" %} <i class="ri-id-card-line"></i></h4>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-3">
+                        <a class="text-decoration-none text-dark" href="{% url 'dashboard-customers' %}">
+                            <div class="card my-card shadow">
+                                <div class="card-body text-center">
+                                    <h4>{% translate "Clientes" %} <i class="ri-store-2-line"></i></h4>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-3">
+                        <a class="text-decoration-none text-dark" href="{% url 'dashboard-employees' %}">
+                            <div class="card my-card shadow">
+                                <div class="card-body text-center">
+                                    <h4>{% translate "Vendedores" %} <i class="ri-money-dollar-box-line"></i></h4>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-3">
+                        <a class="text-decoration-none text-dark" href="{% url 'dashboard-admins' %}">
+                            <div class="card my-card shadow">
+                                <div class="card-body text-center">
+                                    <h4>{% translate "Administradores" %} <i class="ri-train-fill"></i></h4>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

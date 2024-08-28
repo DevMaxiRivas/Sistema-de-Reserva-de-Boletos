@@ -1,0 +1,137 @@
+{% extends 'partials/base.html' %}
+{% load i18n %}
+{% block title %}{% translate "Boletos" %}{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+{% include 'partials/topside_finances.html' %}
+<div class="row my-4">
+    <div class="col-md-12">
+        {% if tickets %}
+        <div class="table-responsive">
+            <table class="table bg-white text-center">
+                <thead class="bg-primary text-white">
+                    <tr>
+                        <th>ID {% translate "Boleto" %}</th>
+                        <th>{% translate "DNI/Pasaporte" %}</th>
+                        <th>{% translate "Asiento" %}</th>
+                        <th>{% translate "Clase" %}</th>
+                        <th>{% translate "Recorrido" %}</th>
+                        <th>{% translate "Asistencia" %}</th>
+                        {% if is_admin %}
+                        <th>{% translate "Acción" %}</th>
+                        {% endif %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for ticket in tickets %}
+                    <tr>
+                        <td>{{ ticket.id }}</td>
+                        <td>{{ ticket.passenger.dni_or_passport }}</td>
+                        <td>{{ ticket.seat.seat_number }}</td>
+                        <td>{{ ticket.getCategorySeat }}</td>
+                        <td>{{ ticket.schedule }}</td>
+                        <td>
+                            {% if ticket.assistance %}
+                            {% translate "Si" %}
+                            {% else %}
+                            {% translate "No" %}
+                            {% endif %}
+                        </td>
+                        {% if is_admin %}
+                        <td>
+                            <a class="btn btn-danger btn-sm mr-2 b mb-1" href="" data-toggle="modal"
+                                data-target="#exampleModal{{ticket.id}}">
+                                {% translate "Cambiar de Pasajero" %}
+                            </a>
+                        </td>
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% if is_admin %}
+        {% for ticket in tickets %}
+        {% include 'public/change_passenger_modal.html' %}
+        {% endfor %}
+        {% endif %}
+        
+        {% else %}
+        <div class="card shadow p-3 mb-5 bg-white rounded text-center">
+            <p>{% translate "No se ha realizado ninguna compra de boletos" %}.</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+<!-- Modal para crear un nuevo pasajero -->
+<div id="passenger-modal" class="modal fade font-black" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">{% translate "Información del Pasajero" %}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="new-passenger-form-container"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function openCreatePassengerModal(dni_or_passport) {
+        $.get('{% url "create_passenger" %}', {
+            dni_or_passport: dni_or_passport
+        }, function (data) {
+            $('#new-passenger-form-container').html(data);
+            $('#passenger-modal').modal('show');
+        }).fail(function () {
+            alert('{% translate "Fallo al cargar el modal. Por favor, intenta de nuevo" %}.');
+        });
+    }
+
+    $(document).on('blur', '.dni_o_pasaporte', function () {
+        var dni_or_passport = $(this).val();
+        var inputField = $(this); // Referencia al campo de entrada
+        if (dni_or_passport) {
+            openCreatePassengerModal(dni_or_passport);
+        }
+    });
+
+    // Cambiar de pasajero
+    $(document).ready(function () {
+        $('.change_passenger_form').on('submit', function (e) {
+            e.preventDefault(); // Evita el envío tradicional del formulario
+            let id_ticket = $(this).find('.ticket_id').val();
+            let dni_o_pasaporte = $(this).find('.dni_o_pasaporte').val();
+            const data = {
+                'id_ticket': id_ticket,
+                'dni_or_passport': dni_o_pasaporte
+            }
+
+            $.ajax({
+                url: '{% url "change_passenger_ticket" %}',
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                method: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(data),
+                success: function (response) {
+                    if (response.success) {
+                        location.reload();
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.error('{% translate "Error en la petición:" %}', error);
+                    alert('{% translate "Hubo un error al procesar su solicitud" %}');
+                }
+            });
+        });
+    });
+
+</script>
+{% endblock %}

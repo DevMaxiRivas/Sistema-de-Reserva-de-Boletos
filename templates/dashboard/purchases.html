@@ -1,0 +1,54 @@
+{% extends 'partials/base.html' %}
+{% load i18n %}
+{% block title %}{% translate "Venta de Boletos" %}{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+{% include 'partials/topside_finances.html' %}
+<div class="row my-4">
+    <div class="col-md-12">
+        {% if sales %}
+        <div class="table-responsive">
+            <table class="table bg-white text-center">
+                <thead class="bg-primary text-white">
+                    <tr>
+                        <th>ID</th>
+                        <th>{% translate "Usuario" %}</th>
+                        <th>Total</th>
+                        <th>{% translate "Fecha" %}</th>
+                        <th>{% translate "Acción" %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for sale in sales %}
+                    <tr>
+                        <td>{{ sale.id }}</td>
+                        {% if sale.user %}
+                        <td>{{ sale.user }}</td>
+                        {% else %}
+                        <td>{% translate "Usuario no registrado" %}</td>
+                        {% endif %}
+                        <td>${{ sale.price }}</td>
+                        <td>{{ sale.purchase_date }}</td>
+                        <td>
+                            <a href="{% url 'dashboard-sale_detail' sale.id %}" class="btn btn-primary mb-2">
+                                {% translate "Ver Boletos" %}
+                            </a>
+                            <a href="{% url 'purchase_detail' sale.id %}" class="btn btn-success mb-2">
+                                {% translate "Ver Comprobante" %}
+                            </a>
+
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="card shadow p-3 mb-5 bg-white rounded text-center">
+            <p>{% translate "No se ha realizado ninguna compra de boletos" %}.</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,2150 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-08-07 17:24-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\dashboard\forms.py:40
+msgid "Correo electrónico"
+msgstr "Email"
+
+#: .\dashboard\forms.py:41 .\templates\dashboard\meal_categories.html:33
+#: .\templates\dashboard\meals.html:33
+#: .\templates\dashboard\product_categories.html:33
+#: .\templates\dashboard\products.html:33
+#: .\templates\dashboard\user_detail.html:26 .\templates\user\profile.html:25
+msgid "Nombre"
+msgstr "First Name"
+
+#: .\dashboard\forms.py:42
+msgid "Apellido"
+msgstr "Last Name"
+
+#: .\dashboard\forms.py:55 .\user\forms.py:22
+msgid "Username"
+msgstr "Username"
+
+#: .\dashboard\forms.py:56 .\dashboard\models.py:744
+msgid "email"
+msgstr "email"
+
+#: .\dashboard\forms.py:57
+msgid "first name"
+msgstr "first name"
+
+#: .\dashboard\forms.py:58
+msgid "last name"
+msgstr "last name"
+
+#: .\dashboard\forms.py:59
+msgid "password"
+msgstr "password"
+
+#: .\dashboard\forms.py:60
+msgid "confirm password"
+msgstr "confirm password"
+
+#: .\dashboard\forms.py:84 .\dashboard\forms.py:241 .\dashboard\forms.py:258
+#: .\dashboard\forms.py:272 .\dashboard\forms.py:285 .\dashboard\forms.py:298
+#: .\dashboard\forms.py:311 .\dashboard\forms.py:391 .\dashboard\views.py:491
+#: .\dashboard\views.py:778 .\dashboard\views.py:1224
+#: .\dashboard\views.py:1282 .\dashboard\views.py:1523
+msgid "Name"
+msgstr "Name"
+
+#: .\dashboard\forms.py:85 .\dashboard\forms.py:118 .\dashboard\forms.py:126
+#: .\dashboard\forms.py:165 .\dashboard\views.py:777
+msgid "DNI/Passport"
+msgstr "DNI/Passport"
+
+#: .\dashboard\forms.py:86
+msgid "Emergency Telephone"
+msgstr "Emergency Telephone"
+
+#: .\dashboard\forms.py:87
+msgid "Date of Birth"
+msgstr "Date of Birth"
+
+#: .\dashboard\forms.py:88 .\dashboard\views.py:493
+msgid "Gender"
+msgstr "Gender"
+
+#: .\dashboard\forms.py:89 .\dashboard\views.py:494
+msgid "Origin Country"
+msgstr "Origin Country"
+
+#: .\dashboard\forms.py:103
+msgid "Email (if not logged in)"
+msgstr "Email (if not logged in)"
+
+#: .\dashboard\forms.py:111 .\user\forms.py:23
+msgid "Email"
+msgstr "Email"
+
+#: .\dashboard\forms.py:127 .\dashboard\views.py:779
+msgid "Schedule"
+msgstr "Schedule"
+
+#: .\dashboard\forms.py:128 .\dashboard\models.py:361
+msgid "Seat"
+msgstr "Seat"
+
+#: .\dashboard\forms.py:174 .\dashboard\models.py:424
+msgid "Meal"
+msgstr "Meal"
+
+#: .\dashboard\forms.py:175 .\dashboard\forms.py:195
+msgid "Quantity"
+msgstr "Quantity"
+
+#: .\dashboard\forms.py:194 .\dashboard\models.py:1039
+msgid "product"
+msgstr "product"
+
+#: .\dashboard\forms.py:219 .\dashboard\forms.py:341 .\dashboard\forms.py:373
+#: .\dashboard\models.py:239 .\dashboard\views.py:1397
+#: .\dashboard\views.py:1465
+msgid "Journey"
+msgstr "Journey"
+
+#: .\dashboard\forms.py:220 .\dashboard\views.py:1466
+msgid "Departure Time"
+msgstr "Departure Time"
+
+#: .\dashboard\forms.py:221 .\dashboard\views.py:1467
+msgid "Arrival Time"
+msgstr "Arrival Time"
+
+#: .\dashboard\forms.py:222
+msgid "Principal Transport"
+msgstr "Principal Transport"
+
+#: .\dashboard\forms.py:242 .\dashboard\forms.py:260 .\dashboard\forms.py:344
+#: .\dashboard\views.py:781
+msgid "Price"
+msgstr "Price"
+
+#: .\dashboard\forms.py:243 .\dashboard\forms.py:259 .\dashboard\forms.py:327
+#: .\dashboard\forms.py:343 .\dashboard\models.py:269
+msgid "Category"
+msgstr "Category"
+
+#: .\dashboard\forms.py:244
+msgid "Stock"
+msgstr "Stock"
+
+#: .\dashboard\forms.py:245 .\dashboard\forms.py:273 .\dashboard\forms.py:286
+#: .\dashboard\forms.py:342 .\dashboard\forms.py:357 .\dashboard\views.py:1341
+msgid "Description"
+msgstr "Description"
+
+#: .\dashboard\forms.py:299 .\dashboard\forms.py:312 .\dashboard\views.py:1225
+#: .\dashboard\views.py:1283
+msgid "Capacity"
+msgstr "Capacity"
+
+#: .\dashboard\forms.py:325 .\dashboard\forms.py:377 .\dashboard\views.py:1401
+msgid "Transport"
+msgstr "Transport"
+
+#: .\dashboard\forms.py:326
+msgid "Seat Number"
+msgstr "Seat Number"
+
+#: .\dashboard\forms.py:356 .\dashboard\forms.py:393 .\dashboard\views.py:1340
+#: .\dashboard\views.py:1525
+msgid "Type"
+msgstr "Type"
+
+#: .\dashboard\forms.py:374 .\dashboard\views.py:1398
+msgid "Order"
+msgstr "Order"
+
+#: .\dashboard\forms.py:375 .\dashboard\views.py:1399
+msgid "Departure Stop"
+msgstr "Departure Stop"
+
+#: .\dashboard\forms.py:376 .\dashboard\views.py:1400
+msgid "Arrival Stop"
+msgstr "Arrival Stop"
+
+#: .\dashboard\forms.py:378 .\dashboard\views.py:1402
+msgid "Duration"
+msgstr "Duration"
+
+#: .\dashboard\forms.py:392 .\dashboard\views.py:1524
+msgid "Location"
+msgstr "Location"
+
+#: .\dashboard\forms.py:399
+#, fuzzy
+#| msgid "Administrators"
+msgid "Admins"
+msgstr "Administrators"
+
+#: .\dashboard\forms.py:400 .\dashboard\views.py:451
+msgid "Employees"
+msgstr "Employees"
+
+#: .\dashboard\forms.py:401 .\dashboard\views.py:438
+msgid "Customers"
+msgstr "Customers"
+
+#: .\dashboard\forms.py:406 .\templates\dashboard\user_detail.html:52
+msgid "Change Group"
+msgstr "Change Group"
+
+#: .\dashboard\models.py:28
+msgid "Habilitado"
+msgstr "Enabled"
+
+#: .\dashboard\models.py:29
+msgid "Deshabilitado"
+msgstr "disabled"
+
+#: .\dashboard\models.py:36 .\dashboard\models.py:173
+msgid "Bus"
+msgstr "Bus"
+
+#: .\dashboard\models.py:37 .\dashboard\models.py:137
+msgid "Train"
+msgstr "Train"
+
+#: .\dashboard\models.py:40 .\dashboard\models.py:110
+#: .\dashboard\models.py:152 .\dashboard\models.py:388
+#: .\dashboard\models.py:401 .\dashboard\models.py:439
+#: .\dashboard\models.py:452 .\dashboard\models.py:626
+msgid "name"
+msgstr "name"
+
+#: .\dashboard\models.py:41
+msgid "location"
+msgstr "location"
+
+#: .\dashboard\models.py:43 .\dashboard\models.py:192
+#: .\dashboard\models.py:326 .\dashboard\models.py:702
+msgid "type"
+msgstr "type"
+
+#: .\dashboard\models.py:50 .\dashboard\models.py:81 .\dashboard\models.py:116
+#: .\dashboard\models.py:157 .\dashboard\models.py:197
+#: .\dashboard\models.py:276 .\dashboard\models.py:335
+#: .\dashboard\models.py:415 .\dashboard\models.py:531
+#: .\dashboard\models.py:565 .\dashboard\models.py:652
+#: .\dashboard\models.py:763 .\dashboard\models.py:921
+#: .\dashboard\models.py:969 .\dashboard\models.py:1047
+msgid "status"
+msgstr "status"
+
+#: .\dashboard\models.py:68
+msgid "Stop"
+msgstr "Stop"
+
+#: .\dashboard\models.py:69 .\dashboard\views.py:1519
+msgid "Stops"
+msgstr "Stops"
+
+#: .\dashboard\models.py:105 .\dashboard\models.py:147
+#: .\dashboard\models.py:312 .\dashboard\models.py:523
+msgid "transport"
+msgstr "transport"
+
+#: .\dashboard\models.py:112 .\dashboard\models.py:154
+msgid "capacity"
+msgstr "capacity"
+
+#: .\dashboard\models.py:138 .\dashboard\views.py:1277
+msgid "Trains"
+msgstr "Trains"
+
+#: .\dashboard\models.py:174 .\dashboard\views.py:1219
+msgid "Buses"
+msgstr "Buses"
+
+#: .\dashboard\models.py:187
+msgid "Train Only"
+msgstr "Train Only"
+
+#: .\dashboard\models.py:188
+msgid "Bus and Train"
+msgstr "Bus and Train"
+
+#: .\dashboard\models.py:194 .\dashboard\models.py:256
+#: .\dashboard\models.py:389 .\dashboard\models.py:409
+#: .\dashboard\models.py:440 .\dashboard\models.py:456
+msgid "description"
+msgstr "description"
+
+#: .\dashboard\models.py:240 .\templates\dashboard\planning.html:18
+msgid "Journeys"
+msgstr "Journeys"
+
+#: .\dashboard\models.py:251 .\dashboard\models.py:500
+#: .\dashboard\models.py:556
+msgid "journey"
+msgstr "journey"
+
+#: .\dashboard\models.py:258 .\dashboard\models.py:320
+msgid "Standar"
+msgstr "Standar"
+
+#: .\dashboard\models.py:259 .\dashboard\models.py:321
+msgid "VIP"
+msgstr "VIP"
+
+#: .\dashboard\models.py:260 .\dashboard\models.py:322
+msgid "Ejecutive"
+msgstr "Ejecutive"
+
+#: .\dashboard\models.py:264 .\dashboard\models.py:404
+#: .\dashboard\models.py:459
+msgid "category"
+msgstr "category"
+
+#: .\dashboard\models.py:272 .\dashboard\models.py:411
+#: .\dashboard\models.py:454 .\dashboard\models.py:749
+#: .\dashboard\models.py:826 .\dashboard\models.py:908
+msgid "price"
+msgstr "price"
+
+#: .\dashboard\models.py:293
+msgid "Journey Price"
+msgstr "Journey Price"
+
+#: .\dashboard\models.py:294 .\templates\dashboard\journey_prices.html:3
+msgid "Journey Prices"
+msgstr "Journey Prices"
+
+#: .\dashboard\models.py:318
+msgid "seat_number"
+msgstr "seat_number"
+
+#: .\dashboard\models.py:331
+msgid "Seat Category"
+msgstr "Seat Category"
+
+#: .\dashboard\models.py:362 .\templates\dashboard\transports.html:18
+msgid "Seats"
+msgstr "Seats"
+
+#: .\dashboard\models.py:396
+msgid "Meal Category"
+msgstr "Meal Category"
+
+#: .\dashboard\models.py:397
+msgid "Meal Categories"
+msgstr "Meal Categories"
+
+#: .\dashboard\models.py:425
+msgid "Meals"
+msgstr "Meals"
+
+#: .\dashboard\models.py:447
+msgid "Product Category"
+msgstr "Product Category"
+
+#: .\dashboard\models.py:448
+msgid "Product Categories"
+msgstr "Product Categories"
+
+#: .\dashboard\models.py:457
+msgid "stock"
+msgstr "stock"
+
+#: .\dashboard\models.py:462
+msgid "state"
+msgstr "state"
+
+#: .\dashboard\models.py:471
+msgid "Product"
+msgstr "Product"
+
+#: .\dashboard\models.py:472
+msgid "Products"
+msgstr "Products"
+
+#: .\dashboard\models.py:507
+msgid "departure_stop"
+msgstr "departure_stop"
+
+#: .\dashboard\models.py:515
+msgid "arrival_stop"
+msgstr "arrival_stop"
+
+#: .\dashboard\models.py:528
+msgid "duration"
+msgstr "duration"
+
+#: .\dashboard\models.py:547
+msgid "Journey Stage"
+msgstr "Journey Stage"
+
+#: .\dashboard\models.py:548 .\dashboard\views.py:1393
+msgid "Journey Stages"
+msgstr "Journey Stages"
+
+#: .\dashboard\models.py:558
+msgid "departure_time"
+msgstr "departure_time"
+
+#: .\dashboard\models.py:559
+msgid "arrival_time"
+msgstr "arrival_time"
+
+#: .\dashboard\models.py:561
+msgid "principal_transport"
+msgstr "principal_transport"
+
+#: .\dashboard\models.py:581 .\dashboard\views.py:1461
+msgid "Journey Schedule"
+msgstr "Journey Schedule"
+
+#: .\dashboard\models.py:582
+msgid "Journey Schedules"
+msgstr "Journey Schedules"
+
+#: .\dashboard\models.py:627
+msgid "dni_or_passport"
+msgstr "dni_or_passport"
+
+#: .\dashboard\models.py:628
+msgid "origin_country"
+msgstr "origin_country"
+
+#: .\dashboard\models.py:630
+msgid "emergency_telephone"
+msgstr "emergency_telephone"
+
+#: .\dashboard\models.py:633
+msgid "date_of_birth"
+msgstr "date_of_birth"
+
+#: .\dashboard\models.py:638
+msgid "Male"
+msgstr "Male"
+
+#: .\dashboard\models.py:639
+msgid "Female"
+msgstr "Female"
+
+#: .\dashboard\models.py:643
+msgid "gender"
+msgstr "gender"
+
+#: .\dashboard\models.py:668
+msgid "Passenger"
+msgstr "Passenger"
+
+#: .\dashboard\models.py:669 .\dashboard\views.py:486
+msgid "Passengers"
+msgstr "Passengers"
+
+#: .\dashboard\models.py:693
+msgid "voucher_no"
+msgstr "voucher_no"
+
+#: .\dashboard\models.py:695
+msgid "Credit Card"
+msgstr "Credit Card"
+
+#: .\dashboard\models.py:696
+msgid "Debit Card"
+msgstr "Debit Card"
+
+#: .\dashboard\models.py:697
+msgid "Account Money MP"
+msgstr "Account Money MP"
+
+#: .\dashboard\models.py:698
+msgid "Cash"
+msgstr "Cash"
+
+#: .\dashboard\models.py:707
+msgid "Payment Type"
+msgstr "Payment Type"
+
+#: .\dashboard\models.py:710
+msgid "payment_status"
+msgstr "payment_status"
+
+#: .\dashboard\models.py:713
+msgid "created_at"
+msgstr "created_at"
+
+#: .\dashboard\models.py:739 .\dashboard\models.py:740
+msgid "Payments"
+msgstr "Payments"
+
+#: .\dashboard\models.py:746
+msgid "user"
+msgstr "user"
+
+#: .\dashboard\models.py:752 .\dashboard\models.py:911
+msgid "purchase_date"
+msgstr "purchase_date"
+
+#: .\dashboard\models.py:756 .\dashboard\models.py:915
+msgid "payment"
+msgstr "payment"
+
+#: .\dashboard\models.py:807
+msgid "Ticket Sale"
+msgstr "Ticket Sale"
+
+#: .\dashboard\models.py:808
+msgid "Ticket Sales"
+msgstr "Ticket Sales"
+
+#: .\dashboard\models.py:814
+msgid "sale"
+msgstr "sale"
+
+#: .\dashboard\models.py:819 .\dashboard\models.py:902
+msgid "passenger"
+msgstr "passenger"
+
+#: .\dashboard\models.py:822
+msgid "schedule"
+msgstr "schedule"
+
+#: .\dashboard\models.py:824
+msgid "seat"
+msgstr "seat"
+
+#: .\dashboard\models.py:828
+msgid "assistance"
+msgstr "assistance"
+
+#: .\dashboard\models.py:895
+msgid "Ticket"
+msgstr "Ticket"
+
+#: .\dashboard\models.py:896
+msgid "Tickets"
+msgstr "Tickets"
+
+#: .\dashboard\models.py:952
+msgid "Purchase Receipt"
+msgstr "Purchase Receipt"
+
+#: .\dashboard\models.py:953
+msgid "Purchase Receipts"
+msgstr "Purchase Receipts"
+
+#: .\dashboard\models.py:959 .\dashboard\models.py:1034
+msgid "receipt"
+msgstr "receipt"
+
+#: .\dashboard\models.py:963
+msgid "meal"
+msgstr "meal"
+
+#: .\dashboard\models.py:964 .\dashboard\models.py:1041
+msgid "quantity"
+msgstr "quantity"
+
+#: .\dashboard\models.py:966 .\dashboard\models.py:1043
+msgid "unit_price"
+msgstr "unit_price"
+
+#: .\dashboard\models.py:1020
+msgid "Detail Food Order"
+msgstr "Detail Food Order"
+
+#: .\dashboard\models.py:1021
+msgid "Detail Food Orders"
+msgstr "Detail Food Orders"
+
+#: .\dashboard\models.py:1101
+msgid "Details Product Order"
+msgstr "Details Product Order"
+
+#: .\dashboard\models.py:1102
+msgid "Details Product Orders"
+msgstr "Details Product Orders"
+
+#: .\dashboard\sendEmails.py:246
+msgid "Notification of Ticket Purchase"
+msgstr "Notification of Ticket Purchase"
+
+#: .\dashboard\sendEmails.py:248
+msgid ""
+"You have made a ticket purchase. Please find attached the purchase receipt"
+msgstr ""
+"You have made a ticket purchase. Please find attached the purchase receipt"
+
+#: .\dashboard\sendEmails.py:271
+msgid "Notification of Passenger Change"
+msgstr "Notification of Passenger Change"
+
+#: .\dashboard\sendEmails.py:273
+msgid ""
+"There has been a change of passenger on a ticket you have purchased. The "
+"ticket is attached below."
+msgstr ""
+"There has been a change of passenger on a ticket you have purchased. The "
+"ticket is attached below."
+
+#: .\dashboard\views.py:90
+msgid "Sunday"
+msgstr "Sunday"
+
+#: .\dashboard\views.py:91
+msgid "Monday"
+msgstr "Monday"
+
+#: .\dashboard\views.py:92
+msgid "Tuesday"
+msgstr "Tuesday"
+
+#: .\dashboard\views.py:93
+msgid "Wednesday"
+msgstr "Wednesday"
+
+#: .\dashboard\views.py:94
+msgid "Thursday"
+msgstr "Thursday"
+
+#: .\dashboard\views.py:95
+msgid "Friday"
+msgstr "Friday"
+
+#: .\dashboard\views.py:96
+msgid "Saturday"
+msgstr "Saturday"
+
+#: .\dashboard\views.py:196 .\dashboard\views.py:1067
+#: .\dashboard\views.py:1647 .\dashboard\views.py:1711
+msgid "Something went wrong"
+msgstr "Something went wrong"
+
+#: .\dashboard\views.py:464
+msgid "Administrators"
+msgstr "Administrators"
+
+#: .\dashboard\views.py:488
+msgid "Add New Passenger"
+msgstr "Add New Passenger"
+
+#: .\dashboard\views.py:490
+msgid "DNI/Passaport"
+msgstr "DNI/Passport"
+
+#: .\dashboard\views.py:492
+msgid "Emergency Phone"
+msgstr "Emergency Telephone"
+
+#: .\dashboard\views.py:780
+msgid "Train Seat"
+msgstr "Train Seat"
+
+#: .\dashboard\views.py:1221
+msgid "Add New Bus"
+msgstr "Add New Bus"
+
+#: .\dashboard\views.py:1279
+msgid "Add New Train"
+msgstr "Add New Train"
+
+#: .\dashboard\views.py:1335
+msgid "Types Journey"
+msgstr "Types Journey"
+
+#: .\dashboard\views.py:1337
+msgid "Add New Journey"
+msgstr "Add New Journey"
+
+#: .\dashboard\views.py:1395
+msgid "Add New Journey Stage"
+msgstr "Add New Journey Stage"
+
+#: .\dashboard\views.py:1463
+msgid "Add New Journey Schedule"
+msgstr "Add New Journey Schedule"
+
+#: .\dashboard\views.py:1521
+msgid "Add New Stop"
+msgstr "Add New Stop"
+
+#: .\dashboard\views.py:1606
+msgid ""
+"No hay suficiente stock. \n"
+"Para los siguientes productos: "
+msgstr ""
+"Not enough stock. \n"
+"For the following products: "
+
+#: .\dashboard\views.py:1645 .\dashboard\views.py:1709
+msgid "Passenger not exist"
+msgstr "Passenger not exist"
+
+#: .\dashboard\views.py:1702
+msgid "Venta registrada con éxito."
+msgstr "Purchase successfully registered."
+
+#: .\dashboard\views.py:1722
+msgid "Orden de Compra de Comidas"
+msgstr "Meal Purchase Order"
+
+#: .\dashboard\views.py:1723
+msgid "Comida"
+msgstr "Meal"
+
+#: .\dashboard\views.py:1733 .\templates\dashboard\product_sales.html:14
+msgid "Orden de Compra de Productos"
+msgstr "Product Purchase Order"
+
+#: .\dashboard\views.py:1734 .\templates\dashboard\product_sales.html:109
+#: .\templates\dashboard\product_sales.html:117
+msgid "Producto"
+msgstr "Product"
+
+#: .\inventoryproject\settings.py:133
+msgid "English"
+msgstr "English"
+
+#: .\inventoryproject\settings.py:134
+msgid "Español"
+msgstr "Spanish"
+
+#: .\templates\dashboard\base_table.html:37
+#: .\templates\dashboard\customers.html:17
+#: .\templates\dashboard\employees.html:16
+#: .\templates\dashboard\journey_prices.html:36
+#: .\templates\dashboard\meal_categories.html:35
+#: .\templates\dashboard\meals.html:36
+#: .\templates\dashboard\product_categories.html:35
+#: .\templates\dashboard\products.html:36
+#: .\templates\dashboard\purchases.html:19
+#: .\templates\dashboard\receipts.html:20
+#: .\templates\dashboard\sale_detail.html:22
+#: .\templates\dashboard\seats.html:36
+#: .\templates\public\client_purchases.html:16
+#: .\templates\public\sale_detail.html:21
+msgid "Acción"
+msgstr "Action"
+
+#: .\templates\dashboard\base_table.html:48
+#: .\templates\dashboard\journey_prices.html:48
+#: .\templates\dashboard\meal_categories.html:46
+#: .\templates\dashboard\meals.html:47
+#: .\templates\dashboard\product_categories.html:46
+#: .\templates\dashboard\products.html:48 .\templates\dashboard\seats.html:47
+#: .\templates\dashboard\user_detail.html:20 .\templates\user\profile.html:19
+#: .\templates\user\profile_customer.html:17
+msgid "Editar"
+msgstr "Edit"
+
+#: .\templates\dashboard\base_table.html:52
+#: .\templates\dashboard\item_delete_modal.html:19
+#: .\templates\dashboard\journey_prices.html:52
+#: .\templates\dashboard\journey_prices_delete_modal.html:19
+#: .\templates\dashboard\meal_categories.html:51
+#: .\templates\dashboard\meal_category_delete_modal.html:19
+#: .\templates\dashboard\meal_delete_modal.html:19
+#: .\templates\dashboard\meals.html:52
+#: .\templates\dashboard\product_categories.html:51
+#: .\templates\dashboard\product_category_delete_modal.html:19
+#: .\templates\dashboard\product_delete_modal.html:19
+#: .\templates\dashboard\products.html:53
+#: .\templates\dashboard\register_sale.html:130
+#: .\templates\dashboard\seat_delete_modal.html:19
+#: .\templates\dashboard\seats.html:51
+#: .\templates\public\purchase_food.html:33
+#: .\templates\public\purchase_tickets.html:32
+msgid "Eliminar"
+msgstr "Delete"
+
+#: .\templates\dashboard\base_table.html:63
+msgid "No se registraron elementos"
+msgstr "No items were recorded"
+
+#: .\templates\dashboard\checkin.html:3
+msgid "Confirmación de Embarque"
+msgstr "Boarding Confirm"
+
+#: .\templates\dashboard\checkin.html:20
+#: .\templates\public\ticket_data.html:19
+msgid "N° de Boleto"
+msgstr "No. Ticket"
+
+#: .\templates\dashboard\checkin.html:27
+#: .\templates\dashboard\sale_detail.html:19 .\templates\public\header.html:10
+#: .\templates\public\sale_detail.html:20
+#: .\templates\public\ticket_data.html:26
+msgid "Recorrido"
+msgstr "Journey"
+
+#: .\templates\dashboard\checkin.html:38
+#: .\templates\public\ticket_data.html:37
+msgid "Operado por"
+msgstr "Operated by"
+
+#: .\templates\dashboard\checkin.html:49
+#: .\templates\dashboard\sale_detail.html:17
+#: .\templates\public\sale_detail.html:18
+#: .\templates\public\ticket_data.html:48
+#: .\templates\public\ticket_reserve.html:128
+msgid "Asiento"
+msgstr "Seat"
+
+#: .\templates\dashboard\checkin.html:59
+#: .\templates\public\ticket_data.html:58
+msgid "Reserva"
+msgstr "Reserve"
+
+#: .\templates\dashboard\checkin.html:76
+#: .\templates\public\ticket_data.html:75
+msgid "Información del Embarque"
+msgstr "Boarding Information"
+
+#: .\templates\dashboard\checkin.html:81
+#: .\templates\public\ticket_data.html:80
+msgid "En puerta de embarque"
+msgstr "At boarding gate"
+
+#: .\templates\dashboard\checkin.html:84
+#: .\templates\public\ticket_data.html:83
+msgid "El embarque finalizará a las"
+msgstr "Boarding will end at"
+
+#: .\templates\dashboard\checkin.html:103
+#: .\templates\partials\topside_planning.html:44
+#: .\templates\public\ticket_data.html:102
+msgid "Paradas"
+msgstr "Stops"
+
+#: .\templates\dashboard\checkin.html:133
+msgid "Confirmar Embarque"
+msgstr "Confirm Boarding"
+
+#: .\templates\dashboard\checkin.html:159
+#: .\templates\dashboard\sale_detail.html:130
+#: .\templates\public\sale_detail.html:116
+#: .\templates\public\ticket_reserve.html:272
+msgid "Hubo un error al procesar su solicitud"
+msgstr "There was an error processing your request"
+
+#: .\templates\dashboard\customers.html:14
+#: .\templates\dashboard\employees.html:13
+#: .\templates\user\profile_customer.html:22
+msgid "Nombre de Usuario"
+msgstr "Username"
+
+#: .\templates\dashboard\customers.html:15
+#: .\templates\dashboard\employees.html:14
+#: .\templates\user\profile_customer.html:30
+msgid "Teléfono"
+msgstr "Phone"
+
+#: .\templates\dashboard\customers.html:16
+#: .\templates\dashboard\employees.html:15
+#: .\templates\dashboard\user_detail.html:30
+#: .\templates\public\ticket_reserve.html:15 .\templates\user\profile.html:29
+#: .\templates\user\profile_customer.html:26
+msgid "Correo Electrónico"
+msgstr "Email"
+
+#: .\templates\dashboard\customers.html:28
+#: .\templates\dashboard\employees.html:27
+msgid "Ver"
+msgstr "View"
+
+#: .\templates\dashboard\finances.html:3 .\templates\dashboard\index.html:3
+#: .\templates\dashboard\journeys.html:3 .\templates\dashboard\planning.html:3
+#: .\templates\dashboard\supplies.html:3
+#: .\templates\dashboard\transports.html:3 .\templates\dashboard\users.html:3
+msgid "Página de Inico"
+msgstr "Home Page"
+
+#: .\templates\dashboard\finances.html:18
+msgid "Ventas por tipo de pago"
+msgstr "Sales by type of payment"
+
+#: .\templates\dashboard\finances.html:27
+msgid "Cantidad de Ventas por tipo de pago"
+msgstr "Number of sales by type of payment"
+
+#: .\templates\dashboard\finances.html:46
+#: .\templates\dashboard\finances.html:91
+#: .\templates\dashboard\finances.html:118
+msgid "Dinero"
+msgstr "Money"
+
+#: .\templates\dashboard\finances.html:72
+msgid "Dinero por tipo de pago"
+msgstr "Money by type of payment"
+
+#: .\templates\dashboard\finances.html:99
+msgid "Dinero por mes en platillos"
+msgstr "Money per month in dishes"
+
+#: .\templates\dashboard\finances.html:135
+msgid "Ingresos por categoria de comida"
+msgstr "Revenues by food category"
+
+#: .\templates\dashboard\index.html:19
+msgid "Ventas"
+msgstr "Sales"
+
+#: .\templates\dashboard\index.html:45
+msgid "Venta de Boletos por hora"
+msgstr "Hourly Ticket Sales"
+
+#: .\templates\dashboard\item_delete_modal.html:8
+#: .\templates\dashboard\journey_prices_delete_modal.html:8
+#: .\templates\dashboard\meal_category_delete_modal.html:8
+#: .\templates\dashboard\meal_delete_modal.html:8
+#: .\templates\dashboard\product_category_delete_modal.html:8
+#: .\templates\dashboard\product_delete_modal.html:8
+#: .\templates\dashboard\seat_delete_modal.html:8
+#: .\templates\public\change_passenger_modal.html:9
+msgid "Atención"
+msgstr "Atention"
+
+#: .\templates\dashboard\item_delete_modal.html:14
+#: .\templates\dashboard\journey_prices_delete_modal.html:14
+#: .\templates\dashboard\meal_category_delete_modal.html:14
+#: .\templates\dashboard\meal_delete_modal.html:14
+#: .\templates\dashboard\product_category_delete_modal.html:14
+#: .\templates\dashboard\product_delete_modal.html:14
+#: .\templates\dashboard\seat_delete_modal.html:14
+msgid "Desea eliminar"
+msgstr "Do you want to delete"
+
+#: .\templates\dashboard\item_delete_modal.html:17
+#: .\templates\dashboard\journey_prices_delete_modal.html:17
+#: .\templates\dashboard\meal_category_delete_modal.html:17
+#: .\templates\dashboard\meal_delete_modal.html:17
+#: .\templates\dashboard\product_category_delete_modal.html:17
+#: .\templates\dashboard\product_delete_modal.html:17
+#: .\templates\dashboard\seat_delete_modal.html:17
+#: .\templates\public\change_passenger_modal.html:24
+msgid "Cancelar"
+msgstr "Cancel"
+
+#: .\templates\dashboard\journey_prices.html:18
+msgid "Agregar Nueva Precio por Recorrido"
+msgstr "Add New Journey Price"
+
+#: .\templates\dashboard\journey_prices.html:33
+#: .\templates\public\ticket_reserve.html:112
+msgid "Tipo de Recorrido"
+msgstr "Journey Type"
+
+#: .\templates\dashboard\journey_prices.html:34
+#: .\templates\dashboard\meals.html:34 .\templates\dashboard\products.html:34
+#: .\templates\dashboard\seats.html:35
+msgid "Categoria"
+msgstr "Category"
+
+#: .\templates\dashboard\journey_prices.html:35
+#: .\templates\dashboard\meals.html:35
+msgid "Precio"
+msgstr "Price"
+
+#: .\templates\dashboard\journey_prices.html:63
+#: .\templates\dashboard\meal_categories.html:65
+#: .\templates\dashboard\product_categories.html:65
+msgid "No se registraron categorias de platillos"
+msgstr "No dish categories were recorded"
+
+#: .\templates\dashboard\journeys.html:49
+msgid "Boletos Vendidos por Tipo de Recorridos"
+msgstr "Tickets Sold by Type of Journey"
+
+#: .\templates\dashboard\journeys.html:99
+msgid "Ventas por Categoria de Asiento"
+msgstr "Sales by Seat Category"
+
+#: .\templates\dashboard\journeys.html:118
+msgid "Ingresos totales"
+msgstr "Total revenues"
+
+#: .\templates\dashboard\journeys.html:135
+msgid "Ingresos totales por tipo de recorrido"
+msgstr "Total revenues by type of trip"
+
+#: .\templates\dashboard\meal_categories.html:3
+msgid "Categorias de Comidas"
+msgstr "Meal Categories"
+
+#: .\templates\dashboard\meal_categories.html:18
+#: .\templates\dashboard\product_categories.html:18
+msgid "Agregar Nueva Categoría"
+msgstr "Add New Category"
+
+#: .\templates\dashboard\meal_categories.html:34
+#: .\templates\dashboard\product_categories.html:34
+msgid "Descripción"
+msgstr "Descripción"
+
+#: .\templates\dashboard\meals.html:3
+msgid "Comidas"
+msgstr "Meals"
+
+#: .\templates\dashboard\meals.html:18
+msgid "Add New Meals"
+msgstr "Add New Meals"
+
+#: .\templates\dashboard\meals.html:66
+msgid "No se registraron platillos"
+msgstr "No cymbals were recorded."
+
+#: .\templates\dashboard\order.html:2
+#, fuzzy
+#| msgid "Order"
+msgid "Orders"
+msgstr "Order"
+
+#: .\templates\dashboard\payments.html:3
+#: .\templates\partials\topside_finances.html:33
+msgid "Pagos"
+msgstr "Payment"
+
+#: .\templates\dashboard\payments.html:15
+msgid "ID"
+msgstr "ID"
+
+#: .\templates\dashboard\payments.html:16
+msgid "ID. Venta"
+msgstr "ID. Sale"
+
+#: .\templates\dashboard\payments.html:17
+msgid "Nro. Recibo"
+msgstr "No. Receipt"
+
+#: .\templates\dashboard\payments.html:18
+msgid "Tipo"
+msgstr "Type"
+
+#: .\templates\dashboard\payments.html:19
+msgid "Creación"
+msgstr "Create"
+
+#: .\templates\dashboard\payments.html:37
+#: .\templates\dashboard\purchase_detail.html:20
+msgid "Sin Registrar"
+msgstr "Unregistered"
+
+#: .\templates\dashboard\payments.html:49
+#: .\templates\dashboard\purchases.html:49
+#: .\templates\dashboard\receipts.html:45
+#: .\templates\dashboard\sale_detail.html:62
+msgid "No se ha realizado ninguna compra de boletos"
+msgstr "No ticket purchases have been made."
+
+#: .\templates\dashboard\planning.html:51
+msgid "Recorridos por dia de la semana"
+msgstr "Tours by day of the week"
+
+#: .\templates\dashboard\planning.html:70
+msgid "Hora del día"
+msgstr "Time of day"
+
+#: .\templates\dashboard\planning.html:79
+msgid "Horarios de salidas por Hora"
+msgstr "Hourly departure schedules"
+
+#: .\templates\dashboard\product_categories.html:3
+msgid "Categorias de Productos"
+msgstr "Product Categories"
+
+#: .\templates\dashboard\product_sales.html:3
+#: .\templates\dashboard\receipts.html:3
+#: .\templates\partials\topside_sales.html:28
+msgid "Venta de Productos"
+msgstr "Products Sale"
+
+#: .\templates\dashboard\product_sales.html:23
+#: .\templates\dashboard\register_sale.html:23
+msgid "DNI/Pasaporte Pasajero"
+msgstr "Passenger ID/Passport"
+
+#: .\templates\dashboard\product_sales.html:29
+msgid "Agregar Producto"
+msgstr "Add Product"
+
+#: .\templates\dashboard\product_sales.html:32
+#: .\templates\dashboard\register_sale.html:32
+msgid "Total de la Orden"
+msgstr "Total Order"
+
+#: .\templates\dashboard\product_sales.html:35
+#: .\templates\dashboard\register_sale.html:35
+msgid "Facturación"
+msgstr "Billing"
+
+#: .\templates\dashboard\product_sales.html:44
+#: .\templates\dashboard\purchase_detail.html:16
+#: .\templates\dashboard\register_sale.html:44
+#: .\templates\public\payment_detail.html:11
+msgid "Nro. Comprobante"
+msgstr "Receipt No."
+
+#: .\templates\dashboard\product_sales.html:50
+#: .\templates\dashboard\register_sale.html:50
+#: .\templates\public\purchase_food.html:48
+msgid "Registrar Venta"
+msgstr "Register Sale"
+
+#: .\templates\dashboard\product_sales.html:78
+#: .\templates\dashboard\register_sale.html:78
+msgid "Seleccione una categoría"
+msgstr "Select a category"
+
+#: .\templates\dashboard\product_sales.html:87
+#: .\templates\dashboard\register_sale.html:87
+msgid "Seleccione Método de Pago"
+msgstr "Select Payment Method"
+
+#: .\templates\dashboard\product_sales.html:97
+msgid "Seleccione un producto"
+msgstr "Select a product"
+
+#: .\templates\dashboard\product_sales.html:113
+#: .\templates\dashboard\register_sale.html:113
+msgid "Cargando categorías"
+msgstr "Loading categories"
+
+#: .\templates\dashboard\product_sales.html:119
+#: .\templates\dashboard\product_sales.html:145
+#: .\templates\dashboard\register_sale.html:119
+#: .\templates\dashboard\register_sale.html:145
+msgid "Seleccione una categoría primero"
+msgstr "Select a category first"
+
+#: .\templates\dashboard\product_sales.html:123
+#: .\templates\dashboard\receipt_detail.html:17
+#: .\templates\dashboard\register_sale.html:123
+msgid "Cantidad"
+msgstr "Quantity"
+
+#: .\templates\dashboard\product_sales.html:127
+#: .\templates\dashboard\register_sale.html:127
+msgid "Precio unitario"
+msgstr "Unit Price"
+
+#: .\templates\dashboard\product_sales.html:130
+msgid "Eliminar Producto"
+msgstr "Delete Product"
+
+#: .\templates\dashboard\product_sales.html:214
+#: .\templates\dashboard\register_sale.html:214
+msgid "Orden de compra registrada con éxito"
+msgstr "Purchase order successfully registered"
+
+#: .\templates\dashboard\products.html:3
+#: .\templates\partials\topside_supplies.html:14
+msgid "Productos"
+msgstr "Products"
+
+#: .\templates\dashboard\products.html:19
+msgid "Agregar Nuevo Producto"
+msgstr "Add New Product"
+
+#: .\templates\dashboard\products.html:35
+msgid "Existencias"
+msgstr "Stocks"
+
+#: .\templates\dashboard\purchase_detail.html:3
+msgid "Comprobante de Venta"
+msgstr "Proof of Sale"
+
+#: .\templates\dashboard\purchase_detail.html:12
+#: .\templates\public\payment_detail.html:7
+msgid "Comprobante"
+msgstr "Receipt"
+
+#: .\templates\dashboard\purchase_detail.html:14
+#: .\templates\public\payment_detail.html:9
+msgid "Pago"
+msgstr "Payment"
+
+#: .\templates\dashboard\purchase_detail.html:23
+#: .\templates\public\payment_detail.html:12
+msgid "Tipo de Pago"
+msgstr "Payment Type"
+
+#: .\templates\dashboard\purchase_detail.html:24
+#: .\templates\public\payment_detail.html:13
+msgid "Fecha de Creación"
+msgstr "Creation Date"
+
+#: .\templates\dashboard\purchase_detail.html:26
+msgid "No hay comprobante asociado a esta venta"
+msgstr "There is no receipt associated with this sale."
+
+#: .\templates\dashboard\purchases.html:3
+msgid "Venta de Boletos"
+msgstr "Ticket Sales"
+
+#: .\templates\dashboard\purchases.html:16 .\templates\partials\nav.html:24
+msgid "Usuario"
+msgstr "User"
+
+#: .\templates\dashboard\purchases.html:18
+#: .\templates\dashboard\receipts.html:19
+#: .\templates\public\client_purchases.html:15
+#: .\templates\public\sale_detail.html:10
+#: .\templates\public\ticket_reserve.html:116
+msgid "Fecha"
+msgstr "Date"
+
+#: .\templates\dashboard\purchases.html:29
+msgid "Usuario no registrado"
+msgstr "Unregistered user"
+
+#: .\templates\dashboard\purchases.html:35
+msgid "Ver Boletos"
+msgstr "See Tickets"
+
+#: .\templates\dashboard\purchases.html:38
+#: .\templates\dashboard\receipts.html:35
+msgid "Ver Comprobante"
+msgstr "See Receipt"
+
+#: .\templates\dashboard\receipt_detail.html:3
+msgid "Detalles"
+msgstr "Details"
+
+#: .\templates\dashboard\receipt_detail.html:15
+msgid "Detalle"
+msgstr "Detail"
+
+#: .\templates\dashboard\receipt_detail.html:16
+msgid "Producto/Platillo"
+msgstr "Product/Meal"
+
+#: .\templates\dashboard\receipt_detail.html:18
+msgid "Precio Unitario"
+msgstr "Unit Price"
+
+#: .\templates\dashboard\receipt_detail.html:41
+msgid "El recibo no cuenta con detalles"
+msgstr "The receipt has no details"
+
+#: .\templates\dashboard\receipts.html:17
+#: .\templates\public\ticket_reserve.html:110
+msgid "Pasajero"
+msgstr "Passenger"
+
+#: .\templates\dashboard\receipts.html:32
+msgid "Ver Detalles"
+msgstr "See Details"
+
+#: .\templates\dashboard\register_sale.html:29
+msgid "Agregar"
+msgstr "Add"
+
+#: .\templates\dashboard\register_sale.html:37
+msgid "Método Pago"
+msgstr "Payment Method"
+
+#: .\templates\dashboard\register_sale.html:39
+msgid "Cargando Métodos de Pago..."
+msgstr "Loading Payment Method ..."
+
+#: .\templates\dashboard\register_sale.html:97
+msgid "Seleccione un "
+msgstr "Select a "
+
+#: .\templates\dashboard\register_sale.html:111
+msgid "Categoría"
+msgstr "Category"
+
+#: .\templates\dashboard\sale_detail.html:3
+msgid "Boletos"
+msgstr "Tickets"
+
+#: .\templates\dashboard\sale_detail.html:15
+#: .\templates\public\purchase_tickets.html:17
+#: .\templates\public\sale_detail.html:16
+msgid "Boleto"
+msgstr "Ticket"
+
+#: .\templates\dashboard\sale_detail.html:16
+#: .\templates\public\sale_detail.html:17
+msgid "DNI/Pasaporte"
+msgstr "DNI/Passport"
+
+#: .\templates\dashboard\sale_detail.html:18
+#: .\templates\public\sale_detail.html:19
+msgid "Clase"
+msgstr "Class"
+
+#: .\templates\dashboard\sale_detail.html:20
+msgid "Asistencia"
+msgstr "Assistance"
+
+#: .\templates\dashboard\sale_detail.html:36
+msgid "Si"
+msgstr "Yes"
+
+#: .\templates\dashboard\sale_detail.html:38
+msgid "No"
+msgstr "No"
+
+#: .\templates\dashboard\sale_detail.html:45
+#: .\templates\public\sale_detail.html:35
+msgid "Cambiar de Pasajero"
+msgstr "Change Passenger"
+
+#: .\templates\dashboard\sale_detail.html:72
+#: .\templates\public\purchase_tickets.html:67
+#: .\templates\public\sale_detail.html:57
+#: .\templates\public\ticket_reserve.html:33
+msgid "Información del Pasajero"
+msgstr "Passenger Information"
+
+#: .\templates\dashboard\sale_detail.html:92
+#: .\templates\public\sale_detail.html:78
+#: .\templates\public\ticket_reserve.html:211
+msgid "Fallo al cargar el modal. Por favor, intenta de nuevo"
+msgstr "Failed to load modal. Please try again."
+
+#: .\templates\dashboard\sale_detail.html:129
+#: .\templates\public\sale_detail.html:115
+#: .\templates\public\ticket_reserve.html:271
+msgid "Error en la petición:"
+msgstr "Error in the request:"
+
+#: .\templates\dashboard\seats.html:3
+#: .\templates\partials\topside_transports.html:35
+msgid "Asientos"
+msgstr "Seats"
+
+#: .\templates\dashboard\seats.html:18
+msgid "Agregar Nuevo Asiento"
+msgstr "Add New Seat"
+
+#: .\templates\dashboard\seats.html:33
+msgid "Transporte"
+msgstr "Transport"
+
+#: .\templates\dashboard\seats.html:34
+msgid "Identificador de Asiento"
+msgstr "Seat Identifier"
+
+#: .\templates\dashboard\seats.html:62
+msgid "No se registraron asientos"
+msgstr "No entries were recorded"
+
+#: .\templates\dashboard\supplies.html:42
+msgid "Existencias de Productos"
+msgstr "Product Stocks"
+
+#: .\templates\dashboard\supplies.html:61
+msgid "Unidades Vendidas"
+msgstr "Units Sold"
+
+#: .\templates\dashboard\supplies.html:78
+msgid "Productos con más Ventas"
+msgstr "Top Selling Products"
+
+#: .\templates\dashboard\transports.html:35
+msgid "Distribución de asientos por categoria"
+msgstr "Distribution of seats by category"
+
+#: .\templates\dashboard\user_detail.html:5
+#: .\templates\dashboard\user_detail.html:12
+msgid "Detalle de Usuario"
+msgstr "User Detail"
+
+#: .\templates\dashboard\user_detail.html:18
+msgid "Información de Peril"
+msgstr "Peril Information"
+
+#: .\templates\dashboard\user_detail.html:34 .\templates\user\profile.html:33
+msgid "Telefóno"
+msgstr "Phone"
+
+#: .\templates\dashboard\user_detail.html:38 .\templates\user\profile.html:37
+#: .\templates\user\profile_customer.html:34
+msgid "Dirección"
+msgstr "Address"
+
+#: .\templates\dashboard\users.html:17 .\templates\dashboard\users.html:44
+msgid "Pasajeros Registrados"
+msgstr "Registered Passengers"
+
+#: .\templates\dashboard\users.html:25
+msgid "Cantidad de Pasajeros por Genero"
+msgstr "Number of Passengers by Gender"
+
+#: .\templates\dashboard\users.html:53
+msgid "Pasajeros Registrados por País"
+msgstr "Registered Passengers by Country"
+
+#: .\templates\dashboard\users.html:72
+#: .\templates\partials\topside_users.html:14
+msgid "Pasajeros"
+msgstr "Passengers"
+
+#: .\templates\dashboard\users.html:89
+msgid "Pasajeros por Edad"
+msgstr "Passengers by age"
+
+#: .\templates\partials\nav.html:18
+#: .\templates\partials\topside_finances.html:6
+#: .\templates\partials\topside_journeys.html:6
+#: .\templates\partials\topside_main.html:6
+#: .\templates\partials\topside_planning.html:6
+#: .\templates\partials\topside_supplies.html:6
+#: .\templates\partials\topside_transports.html:6
+#: .\templates\partials\topside_users.html:6
+msgid "Panel de Control"
+msgstr "Control Panel"
+
+#: .\templates\partials\nav.html:32 .\templates\public\header.html:32
+msgid "Cerrar Sesión"
+msgstr "Logout"
+
+#: .\templates\partials\nav.html:40 .\templates\public\header.html:38
+#: .\templates\user\login.html:25 .\templates\user\register.html:19
+msgid "Registrarse"
+msgstr "Register"
+
+#: .\templates\partials\nav.html:44 .\templates\public\header.html:37
+#: .\templates\user\password_reset_complete.html:18
+#: .\templates\user\password_reset_done.html:18
+msgid "Iniciar Sesión"
+msgstr "Login"
+
+#: .\templates\partials\topside_finances.html:14
+msgid "Ventas de Boletos"
+msgstr "Ticket Sales"
+
+#: .\templates\partials\topside_finances.html:23
+msgid "Ventas de Productos"
+msgstr "Product Sales"
+
+#: .\templates\partials\topside_journeys.html:14
+msgid "Transportes"
+msgstr "Transports"
+
+#: .\templates\partials\topside_journeys.html:24
+msgid "Planificación"
+msgstr "Planning"
+
+#: .\templates\partials\topside_main.html:14
+msgid "Insumos"
+msgstr "Supplies"
+
+#: .\templates\partials\topside_main.html:23
+msgid "Finanzas"
+msgstr "Finance"
+
+#: .\templates\partials\topside_main.html:32
+msgid "Recorridos"
+msgstr "Journeys"
+
+#: .\templates\partials\topside_main.html:41
+msgid "Usuarios"
+msgstr "Users"
+
+#: .\templates\partials\topside_planning.html:14
+msgid "Cronogramas de Recorrido"
+msgstr "Journey Schedules"
+
+#: .\templates\partials\topside_planning.html:24
+msgid "Etapas de Recorrido"
+msgstr "Journey Stages"
+
+#: .\templates\partials\topside_planning.html:35
+msgid "Tipos de Recorridos"
+msgstr "Journey Types"
+
+#: .\templates\partials\topside_sales.html:6
+msgid "Panel de Ventas"
+msgstr "Sales Panel"
+
+#: .\templates\partials\topside_sales.html:15
+msgid "Venta de Comida"
+msgstr "Sale Meals"
+
+#: .\templates\partials\topside_supplies.html:23
+msgid "Categoria de Productos"
+msgstr "Product Category"
+
+#: .\templates\partials\topside_supplies.html:32
+msgid "Platillos"
+msgstr "Meals"
+
+#: .\templates\partials\topside_supplies.html:41
+msgid "Categorias de Platillos"
+msgstr "Meal Categories"
+
+#: .\templates\partials\topside_transports.html:14
+msgid "Colectivos"
+msgstr "Buses"
+
+#: .\templates\partials\topside_transports.html:23
+msgid "Trenes"
+msgstr "Trains"
+
+#: .\templates\partials\topside_transports.html:44
+msgid "Precios por Recorrido"
+msgstr "Journey Prices"
+
+#: .\templates\partials\topside_users.html:23
+msgid "Clientes"
+msgstr "Customers"
+
+#: .\templates\partials\topside_users.html:32
+msgid "Vendedores"
+msgstr "Sellers"
+
+#: .\templates\partials\topside_users.html:41
+msgid "Administradores"
+msgstr "Administrators"
+
+#: .\templates\public\base.html:24
+msgid "Sistema de Reserva de Boletos"
+msgstr "Ticket Reservation System"
+
+#: .\templates\public\change_passenger_modal.html:16
+msgid "Desea cambiar pasajero"
+msgstr "Do you want to change passenger"
+
+#: .\templates\public\change_passenger_modal.html:17
+msgid "DNI o Pasaporte del Nuevo Pasajero"
+msgstr "ID or Passport of New Passenger"
+
+#: .\templates\public\change_passenger_modal.html:26
+msgid "Cambiar"
+msgstr "Change"
+
+#: .\templates\public\client_purchases.html:7
+msgid "Mis Compras"
+msgstr "My Purchases"
+
+#: .\templates\public\client_purchases.html:26
+msgid "Ver Tickets"
+msgstr "See Tickets"
+
+#: .\templates\public\client_purchases.html:34
+msgid "No has realizado ninguna compra"
+msgstr "You have not made a purchase"
+
+#: .\templates\public\create_passenger.html:6
+msgid "Confirmar Datos"
+msgstr "Confirm Data"
+
+#: .\templates\public\footer.html:4
+msgid "Información"
+msgstr "Information"
+
+#: .\templates\public\footer.html:6
+msgid "Estación Central de Trenes"
+msgstr "Central Train Station"
+
+#: .\templates\public\footer.html:7
+msgid "Ciudad de Salta - Argentina"
+msgstr "City of Salta - Argentina"
+
+#: .\templates\public\footer.html:8
+msgid "Código Postal: A4400CRL"
+msgstr "Zip Code: A4400CRL."
+
+#: .\templates\public\footer.html:11
+msgid "Sobre nosotros"
+msgstr "About us"
+
+#: .\templates\public\footer.html:12
+msgid "Nuestra Historia"
+msgstr "Our History"
+
+#: .\templates\public\footer.html:13
+msgid "Beneficios y Promociones"
+msgstr "Benefits & Promotions"
+
+#: .\templates\public\footer.html:14
+msgid "Equipó de Trabajo"
+msgstr "Work Equipment"
+
+#: .\templates\public\footer.html:17
+msgid "Soporte"
+msgstr "Support"
+
+#: .\templates\public\footer.html:19 .\templates\public\header.html:12
+msgid "Contáctenos"
+msgstr "Contact us"
+
+#: .\templates\public\footer.html:22
+msgid "Redes Sociales"
+msgstr "Social Networks"
+
+#: .\templates\public\header.html:9 .\templates\user\login.html:24
+#: .\templates\user\register.html:18
+msgid "Inicio"
+msgstr "Home"
+
+#: .\templates\public\header.html:11
+msgid "Beneficios"
+msgstr "Benefits"
+
+#: .\templates\public\header.html:19
+msgid "Perfil"
+msgstr "Profile"
+
+#: .\templates\public\header.html:25
+msgid "Ver Compras"
+msgstr "See Purchases"
+
+#: .\templates\public\home.html:6
+msgid ""
+"\n"
+"        <h5>Vamos</h5>\n"
+"        <h1>Planifique su viaje<br>con nosotros</h1>\n"
+"        <p>\n"
+"            El recorrido del Tren a las Nubes incluye salida en vehículo "
+"desde la ciudad de Salta, recorriendo por\n"
+"            la RN 51 las\n"
+"            localidades de Campo Quijano y Gobernador Solá hasta llegar al "
+"paraje El Alfarcito donde está previsto\n"
+"            un desayuno\n"
+"            campestre con productos locales elaborados por las comunidades "
+"de la zona.\n"
+"        </p>\n"
+"        "
+msgstr ""
+"\n"
+"    <h5>Let's go</h5>\n"
+"    <h1>Plan your trip<br>with us</h1>\n"
+"    <p>\n"
+"        The route of the Train to the Clouds includes departure by vehicle "
+"from the city of Salta, traveling along NR 51 through the towns of \n"
+"        Campo Quijano and Gobernador Solá until arriving at El Alfarcito, "
+"where a country breakfast with local products made by the \n"
+"communities of the area is planned.\n"
+"    </p>\n"
+"    "
+
+#: .\templates\public\home.html:17
+msgid "Reserve su boleto"
+msgstr "Reserve your ticket"
+
+#: .\templates\public\home.html:22
+msgid ""
+"\n"
+"    <div class=\"center-text\">\n"
+"        <h2> Atracciones </h2>\n"
+"    </div>\n"
+"    "
+msgstr ""
+"\n"
+"    <div class=\"center-text\">\n"
+"        <h2> Attractions </h2>\n"
+"    </div>\n"
+"    "
+
+#: .\templates\public\home.html:32
+msgid "Museo Regional <br> Andino"
+msgstr "Regional <br> Andean Museum"
+
+#: .\templates\public\home.html:38
+msgid "Mercado <br> Artesanal"
+msgstr "Market <br> Artisan"
+
+#: .\templates\public\home.html:44
+msgid "Paseo Anatolio y <br> sus llamas"
+msgstr "Paseo Anatolio and <br> its flames"
+
+#: .\templates\public\home.html:50
+msgid "Paseo <br> Thuru Mmaki"
+msgstr "Paseo <br> Thuru Mmaki"
+
+#: .\templates\public\home.html:56
+msgid "Iglesia San Antonio <br> de Padua"
+msgstr "St. Anthony's Church <br> of Padua"
+
+#: .\templates\public\home.html:66
+msgid ""
+"\n"
+"        <h5>Tren a las nubes</h5>\n"
+"        <h2>Tenga una experiencia inolvidable</h2>\n"
+"        <p>\n"
+"            Maravillese con las pintorescas y rústicas regiones por las que "
+"atraviesa, conociendo sus distinguidas\n"
+"            artesanías, museos, y su deliciosa gastronomía autóctona. <br>\n"
+"\n"
+"            El tren a las nubes se encuentra a 4.220 m.s.n.m. según cuenta "
+"la leyenda, entre los pobladores de la\n"
+"            zona, es el intermediario directo entre la tierra y los sueños, "
+"el responsable de que la Puna salteña\n"
+"            se fusione con el cielo.\n"
+"        </p>\n"
+"        "
+msgstr ""
+"\n"
+"        <h5>Train to the clouds</h5>\n"
+"        <h2>Have an unforgettable experience</h2>\n"
+"        <p>Maravillese con las pintorescas y rústicas regiones por las que "
+"atraviesa, conociendo sus distinguidas\n"
+"            handicrafts, museums, and its delicious native gastronomy. <br>\n"
+"\n"
+"             The train to the clouds is located at 4,220 meters above sea "
+"level             legend, among the inhabitants of the area, it is the "
+"direct \n"
+"             intermediary between the earth and dreams, responsible for "
+"the              Puna Salta to merge with the sky.\n"
+"        </p>\n"
+"        "
+
+#: .\templates\public\home.html:78 .\templates\public\home.html:128
+msgid "Saber más"
+msgstr "Learn more"
+
+#: .\templates\public\home.html:84
+msgid "Servicios a bordo"
+msgstr "Onboard services"
+
+#: .\templates\public\home.html:89
+msgid ""
+"\n"
+"            <h6>Almuerzos</h6>\n"
+"            <h4>Amplia variedad para todos</h4>\n"
+"            "
+msgstr ""
+"\n"
+"            <h6>Lunch</h6>\n"
+"            <h4>Wide variety for everyone</h4>\n"
+"            "
+
+#: .\templates\public\home.html:96
+msgid ""
+"\n"
+"            <h6>Desayunos</h6>\n"
+"            <h4>Disfrute de la mejor comida</h4>\n"
+"            "
+msgstr ""
+"\n"
+"            <h6>Breakfasts</h6>\n"
+"            <h4>Enjoy the best food</h4>\n"
+"            "
+
+#: .\templates\public\home.html:103
+msgid ""
+"\n"
+"            <h6>Mercancía</h6>\n"
+"            <h4>Llevese un recuerdo</h4>\n"
+"            "
+msgstr ""
+"\n"
+"            <h6>Merchandise</h6>\n"
+"            <h4>Take a souvenir</h4>\n"
+"            "
+
+#: .\templates\public\home.html:110
+msgid "Ver Más"
+msgstr "See More"
+
+#: .\templates\public\home.html:116
+msgid ""
+"\n"
+"        <h5>Servicios</h5>\n"
+"        <h2>Incluidos en la excursión</h2>\n"
+"        <p>\n"
+"            <br> Tour guiado a cargo de anfitriones en carretera y a bordo "
+"del Tren.\n"
+"            <br> Desayuno y merienda campestre que consta de infusiones y "
+"aperitivos regionales.\n"
+"            <br> Ceremonia a la bandera en el Viaducto La Polvorilla.\n"
+"            <br> Traslados a los puntos de encuentro en el centro del pueblo "
+"arribado.\n"
+"            <br> Asistencia médica en carretera y a bordo del Tren a cargo "
+"de personal del SAMEC.\n"
+"            <br> Cada pasajero cuenta con una cobertura médica en caso de "
+"imprevistos.\n"
+"        </p>\n"
+"        "
+msgstr ""
+"\n"
+"        <h5>Services</h5>\n"
+"        <h2>Included in the tour</h2>\n"
+"        <p>Guided tour by hosts on the road and on board the of the Train.\n"
+"            <br> Breakfast and country snack consisting of herbal teas and "
+"regional snacks.\n"
+"            <br> Flag ceremony at La Polvorilla Viaduct.\n"
+"            <br> Transfers to the meeting points in the center of town "
+"arrived.\n"
+"            <br> Medical assistance on the road and on board the train "
+"provided by  of SAMEC personnel.\n"
+"            <br> Each passenger is provided with medical coverage in case of "
+"unforeseen events.\n"
+"        </p>\n"
+"        "
+
+#: .\templates\public\home.html:139
+msgid "¿Promociones?"
+msgstr "Promotions?"
+
+#: .\templates\public\home.html:140
+msgid "Suscribase a nuestro boletín de noticias"
+msgstr "Subscribe to our newsletter"
+
+#: .\templates\public\home.html:143
+msgid "Ingrese su correo electronico"
+msgstr "Enter your email address"
+
+#: .\templates\public\home.html:144
+msgid "Enviar"
+msgstr "Send"
+
+#: .\templates\public\payment_detail.html:10
+#: .\templates\public\sale_detail.html:8
+msgid "Venta"
+msgstr "Sale"
+
+#: .\templates\public\payment_detail.html:15
+msgid "No hay comprobante asociados a esta venta"
+msgstr "There is no voucher associated with this sale"
+
+#: .\templates\public\payment_failed.html:7
+msgid "¡Compra Fallida!"
+msgstr "Purchase Failed!"
+
+#: .\templates\public\payment_failed.html:8
+msgid ""
+"Lo sentimos, ha ocurrido un error con su pago. Por favor, intente nuevamente"
+msgstr "We're sorry, an error has occurred with your payment. Please try again"
+
+#: .\templates\public\payment_failed.html:9
+msgid "Reservar nuevamente"
+msgstr "Rebooking"
+
+#: .\templates\public\payment_pending.html:7
+msgid "¡Compra Pendiente!"
+msgstr "Purchase Pending!"
+
+#: .\templates\public\payment_pending.html:8
+msgid ""
+"Su pago está pendiente de confirmación. Le notificaremos una vez que sea "
+"procesado."
+msgstr ""
+"Your payment is pending confirmation. We will notify you once it is "
+"processed."
+
+#: .\templates\public\payment_pending.html:9
+#: .\templates\public\payment_success.html:9
+msgid "Volver al inicio"
+msgstr "Back to home"
+
+#: .\templates\public\payment_success.html:7
+msgid "¡Compra exitosa!"
+msgstr "Successful purchase!"
+
+#: .\templates\public\payment_success.html:8
+msgid "Gracias por su compra. La operación se realizó correctamente."
+msgstr "Thank you for your purchase. The transaction was successful."
+
+#: .\templates\public\purchase_food.html:8
+msgid "Venta de Platillos"
+msgstr "Sale of Saucers"
+
+#: .\templates\public\purchase_food.html:17
+msgid "Platillo"
+msgstr "Meal"
+
+#: .\templates\public\purchase_food.html:46
+msgid "Agregar otro platillo"
+msgstr "Add New Meal"
+
+#: .\templates\public\purchase_food.html:55
+msgid "Nuevo Platillo"
+msgstr "New Meal"
+
+#: .\templates\public\purchase_food.html:81
+msgid "Los campos del formulario no se llenaron correctamente."
+msgstr "The form fields were not filled out correctly."
+
+#: .\templates\public\purchase_food.html:105
+msgid "Pasajero no existe. Por favor, contacte a soporte"
+msgstr "Passenger does not exist. Please contact support"
+
+#: .\templates\public\purchase_food.html:108
+msgid "Todos los platillos tiene marca para eliminar"
+msgstr "All dishes are marked for elimination."
+
+#: .\templates\public\purchase_food.html:110
+#: .\templates\public\purchase_merchandise.html:111
+msgid "Ocurrio un error inesperado intente nuevamente"
+msgstr "An unexpected error occurred, please try again"
+
+#: .\templates\public\purchase_merchandise.html:8
+msgid "Venta de Mercaderia"
+msgstr "Sale of Merchandise"
+
+#: .\templates\public\purchase_merchandise.html:17
+msgid "Merchandise"
+msgstr "Mercancia"
+
+#: .\templates\public\purchase_merchandise.html:45
+msgid "Agregar otro producto"
+msgstr "Add another product"
+
+#: .\templates\public\purchase_merchandise.html:47
+msgid "Comprar Mercaderias"
+msgstr "Buy Merchandise"
+
+#: .\templates\public\purchase_merchandise.html:54
+msgid "Nueva Mercancia"
+msgstr "New Merchandise"
+
+#: .\templates\public\purchase_merchandise.html:82
+msgid "Los campos de los formularios no se llenaron correctamente"
+msgstr "The form fields were not filled out correctly."
+
+#: .\templates\public\purchase_merchandise.html:106
+msgid "El pasajero no existe. Por favor, contacte a soporte"
+msgstr "The passenger does not exist. Please contact support"
+
+#: .\templates\public\purchase_merchandise.html:109
+msgid "Toda la mercaderia tiene marca para eliminar"
+msgstr "All merchandise is marked for disposal"
+
+#: .\templates\public\purchase_tickets.html:8
+#: .\templates\public\ticket_reserve.html:8
+msgid "Reservaciones de Boletos"
+msgstr "Ticket Reservations"
+
+#: .\templates\public\purchase_tickets.html:46
+msgid "Agregar otro boleto"
+msgstr "Add another ticket"
+
+#: .\templates\public\purchase_tickets.html:48
+#: .\templates\public\ticket_reserve.html:24
+msgid "Reservar Boletos"
+msgstr "Reserve Tickets"
+
+#: .\templates\public\purchase_tickets.html:55
+msgid "Nuevo Boleto"
+msgstr "New TIcket"
+
+#: .\templates\public\purchase_tickets.html:143
+msgid "Fallo al cargar el modal. Por favor, intenta de nuevo."
+msgstr "Failed to load modal. Please try again."
+
+#: .\templates\public\sale_detail.html:7
+msgid "Detalles de Venta"
+msgstr "Sale Details"
+
+#: .\templates\public\sale_detail.html:48
+msgid "No hay boletos asociados a esta venta"
+msgstr "There are no tickets associated with this sale"
+
+#: .\templates\public\ticket_data.html:130
+msgid "En este viaje puedes llevar:"
+msgstr "On this trip you can bring:"
+
+#: .\templates\public\ticket_data.html:135
+msgid "Equipaje en cabina"
+msgstr "Cabin baggage"
+
+#: .\templates\public\ticket_data.html:151
+msgid "1 Bolso o mochila pequeña"
+msgstr "1 Purse or small backpack"
+
+#: .\templates\public\ticket_data.html:153
+#: .\templates\public\ticket_data.html:175
+msgid "bajo el asiento delantero"
+msgstr "under the front seat"
+
+#: .\templates\public\ticket_data.html:155
+#: .\templates\public\ticket_data.html:178
+msgid "incluido por tarifa"
+msgstr "included per rate"
+
+#: .\templates\public\ticket_data.html:173
+msgid "Equipaje de mano 10 kg"
+msgstr "Carry-on baggage 10 kg"
+
+#: .\templates\public\ticket_data.html:189
+msgid "Equipaje no incluido:"
+msgstr "Baggage not included:"
+
+#: .\templates\public\ticket_data.html:200
+#: .\templates\public\ticket_data.html:214
+msgid "Sin equipaje de bodega"
+msgstr "No hold baggage"
+
+#: .\templates\public\ticket_data.html:223
+msgid "No se encontró información del boleto"
+msgstr "No ticket information found"
+
+#: .\templates\public\ticket_reserve.html:22
+msgid "Agregar Pasajero"
+msgstr "Add Passenger"
+
+#: .\templates\public\ticket_reserve.html:66
+msgid "Seleccione un Horario"
+msgstr "Select a Schedule"
+
+#: .\templates\public\ticket_reserve.html:71
+#: .\templates\public\ticket_reserve.html:86
+msgid "Sin recorridos disponibles"
+msgstr "No routes available"
+
+#: .\templates\public\ticket_reserve.html:81
+msgid "Seleccione una Categoria"
+msgstr "Select a Category"
+
+#: .\templates\public\ticket_reserve.html:98
+msgid "Seleccione un Asiento"
+msgstr "Select a Seat"
+
+#: .\templates\public\ticket_reserve.html:120
+msgid "Horario"
+msgstr "Schedule"
+
+#: .\templates\public\ticket_reserve.html:124
+msgid "Categoria de Asiento"
+msgstr "Seat Category"
+
+#: .\templates\public\ticket_reserve.html:132
+msgid "DNI o Pasaporte"
+msgstr "DNI or Passport"
+
+#: .\templates\public\ticket_reserve.html:135
+msgid "Eliminar Pasajero"
+msgstr "Delete Passenger"
+
+#: .\templates\public\ticket_reserve.html:251
+msgid "Por favor, agrega al menos un pasajero"
+msgstr "Please add at least one passenger."
+
+#: .\templates\public\ticket_reserve.html:266
+msgid "Error en la respuesta:"
+msgstr "Error in the response:"
+
+#: .\templates\public\ticket_reserve.html:267
+msgid "Hubo un error al procesar su pago"
+msgstr "There was an error processing your payment"
+
+#: .\templates\user\login.html:8
+msgid "INICIO DE SESION"
+msgstr "LOGIN"
+
+#: .\templates\user\login.html:14
+msgid "Ingrese sus credenciales"
+msgstr "Enter your credentials"
+
+#: .\templates\user\login.html:19
+msgid "¿Olvidaste tu contraseña?"
+msgstr "Forgot your password?"
+
+#: .\templates\user\login.html:29 .\templates\user\register.html:23
+msgid "Iniciar sesión"
+msgstr "Login"
+
+#: .\templates\user\password_reset.html:10
+#: .\templates\user\password_reset.html:15
+#: .\templates\user\password_reset_confirm.html:10
+#: .\templates\user\password_reset_done.html:10
+msgid "Restablecer Contraseña"
+msgstr "Reset Password"
+
+#: .\templates\user\password_reset_complete.html:10
+msgid "Resetear Contraseña"
+msgstr "Reset Password"
+
+#: .\templates\user\password_reset_complete.html:14
+msgid "Su contraseña ha sido restablecida con exito."
+msgstr "Your password has been successfully reset."
+
+#: .\templates\user\password_reset_complete.html:15
+msgid "Ahora puede ingresar con su nueva contraseña."
+msgstr "You can now log in with your new password."
+
+#: .\templates\user\password_reset_confirm.html:15
+msgid "Confirmar"
+msgstr "Confirm"
+
+#: .\templates\user\password_reset_done.html:14
+msgid "Un correo le ha sido enviado a la su dirección de correo."
+msgstr "An email has been sent to your email address."
+
+#: .\templates\user\password_reset_done.html:15
+msgid ""
+"Con las instrucciones que necesita seguir para restablecer su contraseña"
+msgstr "With the instructions you need to follow to reset your password."
+
+#: .\templates\user\profile.html:3
+msgid "Perfil de Usuario"
+msgstr "User Profile"
+
+#: .\templates\user\profile.html:11
+#: .\templates\user\profile_customer_update.html:11
+#: .\templates\user\profile_update.html:11
+msgid "Detalle de Cliente"
+msgstr "Customer Detail"
+
+#: .\templates\user\profile.html:17
+msgid "Información de Perfil"
+msgstr "Profile Information"
+
+#: .\templates\user\profile_customer.html:9
+msgid "Detalles de Cuenta"
+msgstr "Account Details"
+
+#: .\templates\user\profile_customer.html:15
+msgid "Información de Usuario"
+msgstr "User Information"
+
+#: .\templates\user\profile_update.html:3
+msgid "Actualización de Perfil"
+msgstr "Profile Update"
+
+#: .\templates\user\profile_update.html:18
+msgid "Update"
+msgstr "Update"
+
+#: .\templates\user\register.html:7
+msgid "REGISTRO DE USUARIO"
+msgstr "USER REGISTRATION"
+
+#: .\templates\user\register.html:13
+msgid "Complete todos los datos"
+msgstr "Complete all data"
+
+#: .\user\forms.py:33
+msgid "Phone"
+msgstr "Phone"
+
+#: .\user\forms.py:34
+msgid "Address"
+msgstr "Address"
+
+#: .\user\forms.py:35
+msgid "Image"
+msgstr "Image"
+
+#~ msgid "Borrar"
+#~ msgstr "Delete"
+
+#~ msgid "Seat Type"
+#~ msgstr "Seat Type"
+
+#~ msgid "Seat Categories"
+#~ msgstr "Seat Categories"
+
+#~ msgid "payment_id"
+#~ msgstr "payment_id"
+
+#~ msgid "Receipt"
+#~ msgstr "Receipt"

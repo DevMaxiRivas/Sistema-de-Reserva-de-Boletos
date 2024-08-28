@@ -1,0 +1,59 @@
+{% extends 'partials/base.html' %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{% block title %}{% translate "Detalle de Usuario" %}{% endblock %}
+{% block content %}
+{%include 'partials/topside_users.html' %}
+<div class="row my-4">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                {% translate "Detalle de Usuario" %}
+            </div>
+            <div class="row p-3">
+                <div class="col-md-8">
+                    <table class="table table-borderless">
+                        <thead>
+                            <span class="h4">{% translate "Información de Peril" %}</span class="h4">
+                                <a class="btn btn-primary btn-sm float-right" href="{% url 'user_update_dashboard' user_profile.id %}">
+                                    {%translate "Editar" %}
+                                </a>
+                                <hr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>{% translate "Nombre" %}</th>
+                                <td>{{ user_profile.username }}</td>
+                            </tr>
+                            <tr>
+                                <th>{% translate "Correo Electrónico" %}</th>
+                                <td>{{ user_profile.email }}</td>
+                            </tr>
+                            <tr>
+                                <th>{% translate "Telefóno" %}</th>
+                                <td>{{ user_profile.profile.phone }}</td>
+                            </tr>
+                            <tr>
+                                <th>{% translate "Dirección" %}</th>
+                                <td>{{ user_profile.profile.address }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-4">
+                    <img class="img-thumbnail" src="{{ user_profile.profile.image.url }}" alt="profile-image">
+                </div>
+            </div>
+            <div class="card-header bg-primary text-white">
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <input class="btn btn-success btn-block" type="submit" value="{% translate 'Change Group' %}">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

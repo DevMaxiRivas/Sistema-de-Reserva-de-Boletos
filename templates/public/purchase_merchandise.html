@@ -1,0 +1,127 @@
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% include 'public/base.html' %}
+
+{% block content %}
+<section class="section_ps home_register_ps form-register font-black">
+    <div class="container mt-5 center-text card">
+        <h1 class="m-3">{% translate "Venta de Mercaderia" %}</h1>
+        <form id="merchandise-form" method="post">
+            {% csrf_token %}
+            {{ sales_form|crispy }}
+            {{ formset.management_form }}
+            <div id="merchandise-forms">
+                {% for form in formset %}
+                <div class="merchandise-form card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">{% translate "Merchandise" %} {{ forloop.counter }}</h5>
+                        {% for field in form.visible_fields %}
+                        {% if field.name != 'delete_merchandise' %}
+                        <div class="form-group">
+                            {{ field.label_tag }}
+                            {{ field }}
+                            {% if field.errors %}
+                            <div class="invalid-feedback">
+                                {{ field.errors }}
+                            </div>
+                            {% endif %}
+                        </div>
+                        {% else %}
+                        <div class="form-check">
+                            {{ field }}
+                            <label class="form-check-label" for="{{ field.id_for_label }}">{% translate "Eliminar"
+                                %}</label>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                        {% for hidden in form.hidden_fields %}
+                        {{ hidden }}
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <button type="button" id="add-merchandise" class="btn btn-secondary mt-2 mb-2">
+                {% translate "Agregar otro producto" %}
+            </button>
+            <button type="submit" class="btn btn-primary">{% translate "Comprar Mercaderias" %}</button>
+        </form>
+    </div>
+
+    <div id="empty-form" style="display:none">
+        <div class="merchandise-form card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">{% translate "Nueva Mercancia" %}</h5>
+                {{ empty_form|crispy }}
+            </div>
+        </div>
+    </div>
+</section>
+{% include 'public/footer.html' %}
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#merchandise-form').submit(function (e) {
+            e.preventDefault();
+
+            let formValid = true;
+
+            // Verificar cada formulario de comida visible
+            $('.merchandise-form:visible').each(function (index, form) {
+                const mealSelect = $(form).find('select[name^="meals"][name$="meal"]').val();
+
+                if (mealSelect === '') {
+                    formValid = false;
+                }
+            });
+
+            if (!formValid) {
+                alert('{% translate "Los campos de los formularios no se llenaron correctamente" %}');
+                return;
+            }
+
+            // Si los formularios estan completos
+            $.ajax({
+                url: $(this).attr('action'),
+                type: 'POST',
+                data: $(this).serialize(),
+                dataType: 'json',
+                success: function (response) {
+                    if (response.success) {
+                        window.location.href = response.redirect_url;
+                    } else {
+                        for (var key in response.errors) {
+                            var field = $('#' + key);
+                            field.addClass('is-invalid');
+                            field.siblings('.invalid-feedback').text(response.errors[key]);
+                        }
+                    }
+                },
+                error: function (xhr) {
+                    var response = xhr.responseJSON;
+                    if (response && response.error && response.no_exist_passenger) {
+                        alert('{% translate "El pasajero no existe. Por favor, contacte a soporte" %}');
+                    } else {
+                        if (response && response.empty_form) {
+                            alert('{% translate "Toda la mercaderia tiene marca para eliminar" %}');
+                        } else {
+                            alert('{% translate "Ocurrio un error inesperado intente nuevamente" %}');
+                        }
+                    }
+                }
+            });
+        });
+
+        $('#add-merchandise').click(function () {
+            var form_idx = $('#id_merchandises-TOTAL_FORMS').val();
+            var empty_form_html = $('#empty-form').html().replace(/__prefix__/g, form_idx);
+            $('#merchandise-forms').append(empty_form_html);
+            $('#id_merchandises-TOTAL_FORMS').val(parseInt(form_idx) + 1);
+        });
+    });
+</script>
+
+{% endblock %}

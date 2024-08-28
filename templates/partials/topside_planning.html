@@ -1,0 +1,53 @@
+{% load i18n %}
+<div class="row">
+    <div class="col-md-12 mt-4">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                {% trans 'Panel de Control' %}
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <a class="text-decoration-none text-dark" href="{% url 'dashboard-journey_schedules' %}">
+                            <div class="card my-card shadow">
+                                <div class="card-body text-center">
+                                    <h4>{% translate "Cronogramas de Recorrido" %} <i class="ri-calendar-todo-fill"></i>
+                                    </h4>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-6">
+                        <a class="text-decoration-none text-dark" href="{% url 'dashboard-journey_stages' %}">
+                            <div class="card my-card shadow">
+                                <div class="card-body text-center">
+                                    <h4>{% translate "Etapas de Recorrido" %} <i class="ri-flag-line"></i></h4>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <a class="text-decoration-none text-dark" href="{% url 'dashboard-types_journey' %}">
+                            <div class="card my-card shadow">
+                                <div class="card-body text-center">
+                                    <h4>{% translate "Tipos de Recorridos" %} <i class="ri-file-list-line"></i></h4>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-6">
+                        <a class="text-decoration-none text-dark" href="{% url 'dashboard-stops' %}">
+                            <div class="card my-card shadow">
+                                <div class="card-body text-center">
+                                    <h4>{% translate "Paradas" %} <i class="ri-home-6-line"></i></h4>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

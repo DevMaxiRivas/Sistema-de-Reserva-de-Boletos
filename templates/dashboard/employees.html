@@ -1,0 +1,37 @@
+{% extends 'partials/base.html' %}
+{% block title %}{{title}}{% endblock %}
+{% load i18n %}
+
+{% block content %}
+{% include 'partials/topside_users.html' %}
+<div class="row my-4">
+    <div class="col-md-12">
+        <div class="table-responsive">
+            <table class="table bg-white text-center">
+                <thead class="bg-primary text-white">
+                    <tr>
+                        <th scope="col">{% translate "Nombre de Usuario" %}</th>
+                        <th scope="col">{% translate "Teléfono" %}</th>
+                        <th scope="col">{% translate "Correo Electrónico" %}</th>
+                        <th scope="col">{% translate "Acción" %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                    <tr>
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.profile.phone }}</td>
+                        <td>{{ user.email }}</td>
+                        <th scope="row"><a class="btn btn-primary btn-sm"
+                                href="{% url 'dashboard-user-detail' user.id %}">
+                                {% translate "Ver" %}</a>
+                        </th>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,165 @@
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% include 'public/base.html' %}
+
+{% block content %}
+<section class="section_ps home_register_ps form-register font-black">
+    <div class="container mt-5 center-text card">
+        <h1 class="m-3">{% translate "Reservaciones de Boletos" %}</h1>
+        <form id="ticket-form" method="post">
+            {% csrf_token %}
+            {{ sales_form|crispy }}
+            {{ formset.management_form }}
+            <div id="ticket-forms">
+                {% for form in formset %}
+                <div class="ticket-form card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">{% translate "Boleto" %} {{ forloop.counter }}</h5>
+                        {% for field in form.visible_fields %}
+                        {% if field.name != 'delete_ticket' %}
+                        <div class="form-group">
+                            {{ field.label_tag }}
+                            {{ field }}
+                            {% if field.errors %}
+                            <div class="invalid-feedback">
+                                {{ field.errors }}
+                            </div>
+                            {% endif %}
+                        </div>
+                        {% else %}
+                        <div class="form-check">
+                            <label class="form-check-label" for="{{ field.id_for_label }}">
+                                {% translate "Eliminar"%}
+                            </label>
+                            {{ field }}
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                        {% for hidden in form.hidden_fields %}
+                        {{ hidden }}
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <button type="button" id="add-ticket" class="btn btn-secondary mt-2 mb-2">
+                {% translate "Agregar otro boleto"%}
+            </button>
+            <button type="submit" class="btn btn-primary">{% translate "Reservar Boletos" %}</button>
+        </form>
+    </div>
+
+    <div id="empty-form" style="display:none">
+        <div class="ticket-form card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">{% translate "Nuevo Boleto" %}</h5>
+                {{ empty_form|crispy }}
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Modal para crear un nuevo pasajero -->
+<div id="passenger-modal" class="modal fade font-black" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">{% translate "Información del Pasajero" %}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="new-passenger-form-container"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include 'public/footer.html' %}
+
+<script>
+    $(document).ready(function () {
+        $('#ticket-form').submit(function (e) {
+            e.preventDefault();
+
+            // Validacion de campos de formulario
+            var formValid = true;
+            $('#ticket-forms .ticket-form').each(function () {
+                $(this).find('.form-control').each(function () {
+                    if ($.trim($(this).val()) === '') {
+                        $(this).addClass('is-invalid');
+                        formValid = false;
+                    } else {
+                        $(this).removeClass('is-invalid');
+                    }
+                });
+            });
+
+            if (!formValid) {
+                alert("Please fill out all fields in each ticket form.");
+                return;
+            }
+
+            // Si los formularios estan completos
+            $.ajax({
+                url: $(this).attr('action'),
+                type: 'POST',
+                data: $(this).serialize(),
+                dataType: 'json',
+                success: function (response) {
+                    if (response.success) {
+                        window.location.href = response.init_point;
+                    } else {
+                        for (var key in response.errors) {
+                            var field = $('#' + key);
+                            field.addClass('is-invalid');
+                            field.siblings('.invalid-feedback').text(response.errors[key]);
+                        }
+                    }
+                },
+                error: function (xhr) {
+                    var response = xhr.responseJSON;
+                    if (response && response.error && response.missing_passengers) {
+                        openCreatePassengerModal(response.missing_passengers);
+                    } else {
+                        if (response && response.empty_form) {
+                            alert('All tickets are marked for deletion');
+                        } else {
+                            alert('An unexpected error occurred. Please try again.');
+                        }
+                    }
+                }
+            });
+        });
+
+        function openCreatePassengerModal(dni_or_passport) {
+            $.get('{% url "create_passenger" %}', {
+                dni_or_passport: dni_or_passport
+            }, function (data) {
+                $('#new-passenger-form-container').html(data);
+                $('#passenger-modal').modal('show');
+            }).fail(function () {
+                alert('{% translate "Fallo al cargar el modal. Por favor, intenta de nuevo." %}');
+            });
+        }
+
+        $('#add-ticket').click(function () {
+            var form_idx = $('#id_tickets-TOTAL_FORMS').val();
+            var empty_form_html = $('#empty-form').html().replace(/__prefix__/g, form_idx);
+            $('#ticket-forms').append(empty_form_html);
+            $('#id_tickets-TOTAL_FORMS').val(parseInt(form_idx) + 1);
+        });
+
+        $(document).on('blur', '.dni_or_passport', function () {
+            var dni_or_passport = $(this).val();
+            var inputField = $(this); // Referencia al campo de entrada
+            if (dni_or_passport) {
+                openCreatePassengerModal(dni_or_passport);
+            }
+        });
+
+    });
+</script>
+
+{% endblock %}

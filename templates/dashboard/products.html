@@ -1,0 +1,67 @@
+{% extends 'partials/base.html' %}
+{% load i18n %}
+{% block title %}{% translate "Productos" %}{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+{% include 'partials/topside_supplies.html' %}
+<div class="row my-4">
+    <div class="col-md-4">
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+        <div class="card card-body">
+            <h5>{% translate "Agregar Nuevo Producto" %}</h5>
+            <hr>
+            <form method="POST">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <input class="btn btn-success btn-block" type="submit" value="Add">
+            </form>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div class="table-responsive">
+            <table class="table bg-white text-center">
+                <thead class="bg-primary text-white">
+                    <tr>
+                        <th scope="col">{% translate "Nombre" %}</th>
+                        <th scope="col">{% translate "Categoria" %}</th>
+                        <th scope="col">{% translate "Existencias" %}</th>
+                        <th scope="col">{% translate "Acción" %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for product in product %}
+                    <tr>
+                        <td>{{ product.name }}</td>
+                        <td>{{ product.category }}</td>
+                        <td>{{ product.stock }}</td>
+                        <td>
+                            <a class="btn btn-primary btn-sm mr-2 mb-1"
+                                href="{% url 'dashboard-product-edit' product.id %}">
+                                {%translate "Editar" %}
+                            </a>
+                            {% if is_admin %}
+                            <a class="btn btn-danger btn-sm mr-2 b mb-1" href="" data-toggle="modal"
+                            data-target="#exampleModal{{product.id}}">
+                            {% translate "Eliminar" %}
+                        </a>
+                        {% endif %}
+                    </td>
+                    {% if is_admin %}
+                    {% include "dashboard/product_delete_modal.html" %}
+                    {% endif %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

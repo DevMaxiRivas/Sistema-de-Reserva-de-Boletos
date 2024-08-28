@@ -1,0 +1,164 @@
+{% extends 'partials/base.html' %}
+{% load i18n %}
+{% block title %}{% translate "Confirmación de Embarque" %}{% endblock %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+{% include 'partials/topside_finances.html' %}
+<div class="d-flex justify-content-center row mx-auto my-4">
+    <div class="
+                            card
+                            top-50 start-50
+                            translate-middle 
+                            h-auto d-inline-block
+                            w-auto p-3
+                            shadow p-3 mb-5 bg-white rounded
+                            ">
+        <div class="card-body">
+            <div>
+                <h6 class="display-5">{% translate "N° de Boleto" %} {{ data.IdTicket }}</h6>
+            </div>
+            <div>
+                <span class="display-4">{{data.NombrePasajero}} </span>
+            </div>
+            <div class="mt-2">
+                <div>
+                    <span class="d-block">{% translate "Recorrido" %}</span>
+                    <section>
+                        <div>
+                            <div>
+                                <p class="display-5" style="--darkreader-inline-color: #aea79c;">
+                                    {{data.FechaBoleto}}
+                                </p>
+                                <div class="d-flex align-middle">
+                                    <img style="width: auto; height: 45px;"
+                                        src="{% static 'img/TrenALasNubesLogo.png' %}" alt="Logo">
+                                    <div>
+                                        <span>{% translate "Operado por" %}</span>
+                                        <p color="#5C5C5C" data-darkreader-inline-color=""
+                                            style="--darkreader-inline-color: #aea79c;">
+                                            <strong>Tren A Las Nubes</strong>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <div>
+                        <p>{% translate "Asiento" %}</p>
+                        <div>
+                            <div>
+                                <div class="d-block">
+                                    <h3 style="--darkreader-inline-color: #cfcbc5;">{{data.IdAsiento}}</h3>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <p data-darkreader-inline-color="" style="--darkreader-inline-color: #aea79c;">
+                                        {{data.CategoriaAsiento}}
+                                    </p>
+                                    <p>{% translate "Reserva" %} {{data.IdVenta}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <canvas id="boardp-info-barcode-qr-code" hidden="" class="sc-dtInlm hWGzCk"></canvas>
+                    </div>
+                    <div>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+            <section>
+                <span><strong class="display-4">
+                        {% translate "Información del Embarque" %}
+                    </strong></span>
+                <div class="container m-4">
+                    <div class="row">
+                        <span class="col-6">
+                            {% translate "En puerta de embarque" %}
+                        </span>
+                        <span class="col-6">
+                            {% translate "El embarque finalizará a las" %}
+                        </span>
+                    </div>
+                    <div class="row">
+                        <span class="col-6">
+                            <h4 class="text-end">
+                                {{data.HorarioEspera}}
+                            </h4>
+                        </span>
+                        <span class="col-6">
+                            <h4 class="text-end">
+                                {{data.HorarioSalida}}
+                            </h4>
+                        </span>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <span><strong class="display-4">
+                        {% translate "Paradas" %}
+                    </strong></span>
+                <div class="container m-4">
+                    <div class="row">
+                        <span class="col-6">
+                            {{data.EstacionSalida}}
+                        </span>
+                        <span class="col-6">
+                            {{data.EstacionLlegada}}
+                        </span>
+                    </div>
+                    <div class="row">
+                        <span class="col-6">
+                            <h4>
+                                {{data.HorarioPartida}}
+                            </h4>
+                        </span>
+                        <span class="col-6">
+                            <h4>
+                                {{data.HorarioLlegada}}
+                            </h4>
+                        </span>
+                    </div>
+                </div>
+            </section>
+            {% if not data.assistance %}
+            <section class="d-flex justify-content-center">
+                <form id="checkin-form">
+                    {% csrf_token %}
+                    <input type="hidden" value="{{data.IdTicket}}" id="ticket_id">
+                    <input type="submit" class="btn btn-success" value='{% translate "Confirmar Embarque" %}'>
+                </form>
+            </section>
+            {% endif %}
+        </div>
+    </div>
+</div>
+<script>
+    $('#checkin-form').submit(function (e) {
+        e.preventDefault();
+        form = { 'ticket_id': $('#ticket_id').val() };
+
+        $.ajax({
+            url: '{% url "checkin_ticket" %}',
+            headers: {
+                'X-CSRFToken': '{{ csrf_token }}'
+            },
+            method: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(form),
+            success: function (response) {
+                if (response.success) {
+                    location.reload();
+                }
+            },
+            error: function (xhr, status, error) {
+                alert('{% translate "Hubo un error al procesar su solicitud" %}');
+            }
+        });
+    });
+</script>
+{% endblock %}

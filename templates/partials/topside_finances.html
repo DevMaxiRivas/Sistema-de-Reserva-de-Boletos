@@ -1,0 +1,42 @@
+{% load i18n %}
+<div class="row">
+    <div class="col-md-12 mt-4">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                {% trans 'Panel de Control' %}
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <a class="text-decoration-none text-dark" href="{% url 'dashboard-purchases' %}">
+                            <div class="card my-card shadow">
+                                <div class="card-body text-center">
+                                    <h4>{% translate "Ventas de Boletos" %} <i class="ri-ticket-line"></i></h4>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a class="text-decoration-none text-dark" href="{% url 'dashboard-receipts' %}">
+                            <div class="card my-card shadow">
+                                <div class="card-body text-center">
+                                    <h4>{% translate "Ventas de Productos" %} <i class="ri-money-dollar-box-line"></i>
+                                    </h4>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a class="text-decoration-none text-dark" href="{% url 'dashboard-payments' %}">
+                            <div class="card my-card shadow">
+                                <div class="card-body text-center">
+                                    <h4>{% translate "Pagos" %} <i class="ri-currency-line"></i></h4>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

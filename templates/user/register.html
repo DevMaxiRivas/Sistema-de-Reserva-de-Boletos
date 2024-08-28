@@ -1,0 +1,32 @@
+{% load i18n %}
+{% include 'public/base.html' %}
+{% block content %}
+<section class="section_ps home_register_ps form-register font-black">
+    {% load crispy_forms_tags %}
+    <div class="container mt-3 center-text">
+        <h2 class="title_ps">{% translate "REGISTRO DE USUARIO" %}</h2>
+        <form method="POST" action="">
+            {% csrf_token %}
+
+            <div class="card mx-auto" style="width: 30rem;">
+                <div class="card-body">
+                    <h5 class="card-title">{% translate "Complete todos los datos" %}</h5>
+                    {{ form|crispy }}
+
+                    <div class="d-flex justify-content-between">
+                        <span class="span_ps">
+                            <a class="card-link" href="{% url 'home' %}">{% translate "Inicio" %}</a>
+                            <a class="card-link" href="{% url 'user-register' %}">{% translate "Registrarse" %}</a>
+                        </span>
+
+                        <button class="btn btn-sm btn-primary float-end" type="submit">
+                            {% translate "Iniciar sesión"%}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+{% include 'public/footer.html' %}
+{% endblock %}

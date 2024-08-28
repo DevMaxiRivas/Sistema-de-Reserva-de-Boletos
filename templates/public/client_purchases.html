@@ -1,0 +1,40 @@
+{% load i18n %}
+{% include 'public/base.html' %}
+
+{% block content %}
+<section class="section_ps home_ps form-register">
+    <div class="card container mt-5 center-text">
+        <h1 class="mb-3 mt-3">{% translate "Mis Compras" %}</h1>
+        {% if sales_with_urls %}
+        <div class="list-group">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Total</th>
+                        <th>{% translate "Fecha" %}</th>
+                        <th>{% translate "Acción" %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in sales_with_urls %}
+                    <tr>
+                        <td>{{ item.sale.id }}</td>
+                        <td>${{ item.sale.price }}</td>
+                        <td>{{ item.sale.purchase_date }}</td>
+                        <td>
+                            <a href="{{ item.detail_url }}" class="btn btn-primary">{% translate "Ver Tickets" %}</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <p class="font-black">{% translate "No has realizado ninguna compra" %}.</p>
+        {% endif %}
+    </div>
+</section>
+
+{% include 'public/footer.html' %}
+{% endblock %}

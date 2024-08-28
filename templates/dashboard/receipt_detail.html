@@ -1,0 +1,46 @@
+{% extends 'partials/base.html' %}
+{% load i18n %}
+{% block title %}{% translate "Detalles" %}{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+{% include 'partials/topside_finances.html' %}
+<div class="row my-4">
+    <div class="col-md-12">
+        {% if details %}
+        <div class="table-responsive">
+            <table class="table bg-white text-center">
+                <thead class="bg-primary text-white">
+                    <tr>
+                        <th>ID {% translate "Detalle" %}</th>
+                        <th>{% translate "Producto/Platillo" %}</th>
+                        <th>{% translate "Cantidad" %}</th>
+                        <th>{% translate "Precio Unitario" %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for detail in details %}
+                    <tr>
+                        <td>{{ detail.id }}</td>
+                        <td>
+                            {% if detail.product %}
+                            {{ detail.product }}
+                            {% else %}
+                            {{ detail.meal }}
+                            {% endif %}
+                        </td>
+                        <td>{{ detail.quantity }}</td>
+                        <td>${{ detail.unit_price }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="card shadow p-3 mb-5 bg-white rounded text-center">
+            <p>{% translate "El recibo no cuenta con detalles" %}.</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

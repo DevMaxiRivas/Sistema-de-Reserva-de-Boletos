@@ -1,0 +1,73 @@
+<div class="row">
+    <div class="col-md-12 mt-4">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                Dashboard Statistics
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <a class="text-decoration-none text-dark" href="{% url 'dashboard-customers' %}">
+                            <div class="card my-card shadow">
+                                <div class="card-body text-center">
+                                    <h4>Customers <i class="ri-group-fill"></i></h4>
+                                    <h3>{{ customer_count }}</h3>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a class="text-decoration-none text-dark" href="{% url 'dashboard-products' %}">
+                            <div class="card my-card shadow">
+                                <div class="card-body text-center">
+                                    <h4>Products <i class="ri-dropbox-fill"></i></h4>
+                                    <h3>{{ product_count }}</h3>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a class="text-decoration-none text-dark" href="{% url 'dashboard-meals' %}">
+                            <div class="card my-card shadow">
+                                <div class="card-body text-center">
+                                    <h4>Meals <i class="ri-restaurant-fill"></i></h4>
+                                    <h3>{{ meals_count }}</h3>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4 mt-3">
+                        <a class="text-decoration-none text-dark" href="{% url 'dashboard-purchases' %}">
+                            <div class="card my-card shadow">
+                                <div class="card-body text-center">
+                                    <h4>Ticket Sales <i class="ri-coupon-2-line"></i></h4>
+                                    <h3>{{ sales_count }}</h3>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4 mt-3">
+                        <a class="text-decoration-none text-dark" href="{% url 'dashboard-purchases' %}">
+                            <div class="card my-card shadow">
+                                <div class="card-body text-center">
+                                    <h4>Receips <i class="ri-article-line"></i></h4>
+                                    <h3>{{ receipts_count }}</h3>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4 mt-3">
+                        <a class="text-decoration-none text-dark" href="{% url 'dashboard-purchases' %}">
+                            <div class="card my-card shadow">
+                                <div class="card-body text-center">
+                                    <h4>Payments <i class="ri-money-dollar-box-line"></i></h4>
+                                    <h3>{{ payments_count }}</h3>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

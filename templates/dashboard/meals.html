@@ -1,0 +1,71 @@
+{% extends 'partials/base.html' %}
+{% load i18n %}
+{% block title %}{% translate "Comidas" %}{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+{% include 'partials/topside_supplies.html' %}
+<div class="row my-4">
+    <div class="col-md-4">
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+        <div class="card card-body">
+            <h5>{% translate "Add New Meals" %}</h5>
+            <hr>
+            <form method="POST">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <input class="btn btn-success btn-block" type="submit" value="Add">
+            </form>
+        </div>
+    </div>
+    <div class="col-md-8">
+        {% if meals %}
+        <div class="table-responsive">
+            <table class="table bg-white text-center">
+                <thead class="bg-primary text-white">
+                    <tr>
+                        <th scope="col">{% translate "Nombre" %}</th>
+                        <th scope="col">{% translate "Categoria" %}</th>
+                        <th scope="col">{% translate "Precio" %}</th>
+                        <th scope="col">{% translate "Acción" %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for meal in meals %}
+                    <tr>
+                        <td>{{ meal.name }}</td>
+                        <td>{{ meal.category }}</td>
+                        <td>${{ meal.price }}</td>
+                        <td>
+                            <a class="btn btn-primary btn-sm mr-2 mb-1" href="{% url 'dashboard-meal-edit' meal.id %}">
+                                {% translate "Editar" %}
+                            </a>
+                            {% if is_admin %}
+                            <a class="btn btn-danger btn-sm mr-2 b mb-1" href="" data-toggle="modal"
+                                data-target="#exampleModal{{meal.id}}">
+                                {% translate "Eliminar" %}
+                            </a>
+                            {% endif %}
+                        </td>
+                        {% if is_admin %}
+                        {% include "dashboard/meal_delete_modal.html" %}
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="card shadow p-3 mb-5 bg-white rounded text-center">
+            <p>{% translate "No se registraron platillos" %}.</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

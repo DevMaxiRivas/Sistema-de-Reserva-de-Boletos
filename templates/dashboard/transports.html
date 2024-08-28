@@ -1,0 +1,46 @@
+{% extends 'partials/base.html' %}
+{% load i18n %}
+{% block title %}{% translate "Página de Inico" %}{% endblock %}
+
+{% block content %}{% include 'partials/topside_transports.html' %}
+<div class="row ">
+    <div class="col-md-12 my-4">
+        <div class="bg-white">
+            <div class="card-body">
+                <canvas id="bar-chart-horizontal" width="800" height="450"></canvas>
+                <script>
+                    new Chart(document.getElementById("bar-chart-horizontal"), {
+                    type: 'horizontalBar',
+                    data: {
+                    labels: [{% for category in seat_distribution_in_trains %} '{{category.category}}', {% endfor %}],
+                    datasets: [
+                        {
+                        label: "{% translate 'Seats' %}",
+                        backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+                        data: [{% for category in seat_distribution_in_trains %} '{{category.count}}', {% endfor %}]
+                        }
+                    ]
+                    },
+                    options: {
+                        scales: {
+                            xAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        },
+                    legend: { display: false },
+                    title: {
+                        display: true,
+                        text: '{% translate "Distribución de asientos por categoria" %}'
+                    }
+                    }
+                });
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

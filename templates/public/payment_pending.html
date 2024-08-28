@@ -1,0 +1,13 @@
+{% load i18n %}
+{% include 'public/base.html' %}
+
+<section class="section_ps home_ps form-register">
+    <div class="container mt-5 center-text">
+        {% block content %}
+        <h2>{% translate "¡Compra Pendiente!" %}</h2>
+        <p>{% translate "Su pago está pendiente de confirmación. Le notificaremos una vez que sea procesado." %}</p>
+        <a href="{% url 'home' %}" class="btn btn-primary">{% translate "Volver al inicio" %}</a>
+        {% endblock %}
+    </div>
+</section>
+{% include 'public/footer.html' %}

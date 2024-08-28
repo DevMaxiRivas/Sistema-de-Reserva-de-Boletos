@@ -1,0 +1,32 @@
+{% extends 'partials/base.html' %}
+{% load i18n %}
+{% block title %}{% translate "Comprobante de Venta" %}{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+{% include 'partials/topside_finances.html' %}
+<div class="row my-4">
+    <div class="col-md-12">
+        <div class="card shadow bg-white rounded text-center">
+            <div class="container mt-2">
+                <h1>{% translate "Comprobante" %}</h1>
+                {% if payment %}
+                <h4>{% translate "Pago" %} ID: {{ payment.id }}</h4>
+                <p>
+                    {% translate "Nro. Comprobante" %}:
+                    {% if payment.voucher_no %}
+                    {{ payment.voucher_no }}
+                    {% else %}
+                    {% translate "Sin Registrar" %}
+                    {% endif %}
+                </p>
+                <p>{% translate "Tipo de Pago" %}: {{ payment.getType }}</p>
+                <p>{% translate "Fecha de Creación" %}: {{ payment.created_at }}</p>
+                {% else %}
+                <p>{% translate "No hay comprobante asociado a esta venta" %}.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

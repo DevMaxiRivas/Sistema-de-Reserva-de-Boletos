@@ -1,0 +1,229 @@
+{% include 'public/base.html' %}
+{% load static%}
+{% load i18n %}
+
+{% block content %}
+<section class="section_ps home_ps form-register font-black">
+    <div class="d-flex justify-content-center row mx-auto my-4">
+        <div class="
+                            card
+                            top-50 start-50
+                            translate-middle 
+                            h-auto d-inline-block
+                            w-auto p-3 mt-5
+                            shadow p-3 mb-5 bg-white rounded
+                            ">
+            <div class="card-body">
+                {% if data %}
+                <div>
+                    <h6 class="display-5">{% translate "N° de Boleto" %} {{ data.IdTicket }}</h6>
+                </div>
+                <div>
+                    <span class="display-4">{{data.NombrePasajero}} </span>
+                </div>
+                <div class="mt-2">
+                    <div>
+                        <span class="d-block">{% translate "Recorrido" %}</span>
+                        <section>
+                            <div>
+                                <div>
+                                    <p class="display-5" style="--darkreader-inline-color: #aea79c;">
+                                        {{data.FechaBoleto}}
+                                    </p>
+                                    <div class="d-flex align-middle">
+                                        <img style="width: auto; height: 45px;"
+                                            src="{% static 'img/TrenALasNubesLogo.png' %}" alt="Logo">
+                                        <div>
+                                            <span>{% translate "Operado por" %}</span>
+                                            <p color="#5C5C5C" data-darkreader-inline-color=""
+                                                style="--darkreader-inline-color: #aea79c;">
+                                                <strong>Tren A Las Nubes</strong>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <div>
+                            <p>{% translate "Asiento" %}</p>
+                            <div>
+                                <div>
+                                    <div class="d-block">
+                                        <h3 style="--darkreader-inline-color: #cfcbc5;">{{data.IdAsiento}}</h3>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <p data-darkreader-inline-color="" style="--darkreader-inline-color: #aea79c;">
+                                            {{data.CategoriaAsiento}}
+                                        </p>
+                                        <p>{% translate "Reserva" %} {{data.IdVenta}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <canvas id="boardp-info-barcode-qr-code" hidden="" class="sc-dtInlm hWGzCk"></canvas>
+                        </div>
+                        <div>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+                <section>
+                    <span><strong class="display-4">
+                            {% translate "Información del Embarque" %}
+                        </strong></span>
+                    <div class="container m-4">
+                        <div class="row">
+                            <span class="col-6">
+                                {% translate "En puerta de embarque" %}
+                            </span>
+                            <span class="col-6">
+                                {% translate "El embarque finalizará a las" %}
+                            </span>
+                        </div>
+                        <div class="row">
+                            <span class="col-6">
+                                <h4 class="text-end">
+                                    {{data.HorarioEspera}}
+                                </h4>
+                            </span>
+                            <span class="col-6">
+                                <h4 class="text-end">
+                                    {{data.HorarioSalida}}
+                                </h4>
+                            </span>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <span><strong class="display-4">
+                            {% translate "Paradas" %}
+                        </strong></span>
+                    <div class="container m-4">
+                        <div class="row">
+                            <span class="col-6">
+                                {{data.EstacionSalida}}
+                            </span>
+                            <span class="col-6">
+                                {{data.EstacionLlegada}}
+                            </span>
+                        </div>
+                        <div class="row">
+                            <span class="col-6">
+                                <h4>
+                                    {{data.HorarioPartida}}
+                                </h4>
+                            </span>
+                            <span class="col-6">
+                                <h4>
+                                    {{data.HorarioLlegada}}
+                                </h4>
+                            </span>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <div>
+                        <h3>{% translate "En este viaje puedes llevar:" %}</h3>
+                    </div>
+                    <div>
+                        <p>
+                            <strong>
+                                {% translate "Equipaje en cabina" %}:
+                            </strong>
+                        </p>
+                        <ul>
+                            <li>
+                                <div>
+                                    <div class="d-flex">
+                                        <figure class="sc-ikkxIA kMskgs">
+                                            <picture><img id="PERSONAL_ITEM-image"
+                                                    src="https://s.latamairlines.com/images/web-boarding-pass/xp_ready2fly_personal_item.svg"
+                                                    alt="ilustration"></picture>
+                                        </figure>
+                                        <div>
+                                            <p style="--darkreader-inline-color: #cac5be;">
+                                                <span class="d-block">
+                                                    <strong>
+                                                        {% translate "1 Bolso o mochila pequeña" %}
+                                                    </strong>
+                                                    ({% translate "bajo el asiento delantero" %})
+                                                </span>
+                                                <strong>1 {% translate "incluido por tarifa" %}.</strong>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <div class="d-flex">
+                                        <figure class="sc-ikkxIA kMskgs">
+                                            <picture><img id="CARRYON_SMALL-image"
+                                                    src="https://s.latamairlines.com/images/web-boarding-pass/xp_ready2fly_carry_on_baggage.svg"
+                                                    alt="ilustration"></picture>
+                                        </figure>
+                                        <div>
+                                            <p style="--darkreader-inline-color: #cac5be;">
+                                                <span class="d-block">
+                                                    <strong>
+                                                        1 {% translate "Equipaje de mano 10 kg" %}
+                                                    </strong>
+                                                    ({% translate "bajo el asiento delantero" %})
+                                                </span>
+                                                <strong>
+                                                    1 {% translate "incluido por tarifa" %}.
+                                                </strong>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <hr>
+                        <div>
+                            <p>
+                                <strong>{% translate "Equipaje no incluido:" %}</strong>
+                            </p>
+                            <li>
+                                <div>
+                                    <div class="d-flex align-items-center">
+                                        <figure class="sc-ikkxIA kMskgs">
+                                            <picture><img id="CHECKED_BAGGAGE_SMALL-image"
+                                                    src="https://s.latamairlines.com/images/web-boarding-pass/xp_ready2fly_checked_small_baggage_disabled.svg"
+                                                    alt="ilustration"></picture>
+                                        </figure>
+                                        <p style="--darkreader-inline-color: #aea79c;">
+                                            <span>-- {% translate "Sin equipaje de bodega" %} 15 kg</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <div class="d-flex align-items-center">
+                                        <figure class="sc-ikkxIA kMskgs">
+                                            <picture><img id="CHECKED_BAGGAGE-image"
+                                                    src="https://s.latamairlines.com/images/web-boarding-pass/xp_ready2fly_checked_baggage_disabled.svg"
+                                                    alt="ilustration"></picture>
+                                        </figure>
+                                        <p style="--darkreader-inline-color: #aea79c;">
+                                            <span>-- {% translate "Sin equipaje de bodega" %} 23 kg</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+                        </div>
+                    </div>
+                </section>
+                {% else %}
+                <h1>{% translate "No se encontró información del boleto" %}</h1>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

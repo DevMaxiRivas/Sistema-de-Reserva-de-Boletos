@@ -1,0 +1,49 @@
+{% include 'public/base.html' %}
+{% load i18n %}
+{% block content %}
+<section class="section_ps home_ps form-register">
+    <div class="mt-5 row my-4">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    {%translate "Detalles de Cuenta"%}
+                </div>
+                <div class="row p-3">
+                    <div class="col-md-8">
+                        <table class="table table-borderless">
+                            <thead>
+                                <span class="h4 font-black">{%translate "Información de Usuario"%}</span class="h4">
+                                <a class="btn btn-primary btn-sm float-right"
+                                    href="{% url 'profile_customer_update' %}">{% translate "Editar" %}</a>
+                                <hr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">{% translate "Nombre de Usuario" %}</th>
+                                    <td>{{ user.username }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">{% translate "Correo Electrónico" %}</th>
+                                    <td>{{ user.email }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">{% translate "Teléfono" %}</th>
+                                    <td>{{ user.profile.phone }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">{% translate "Dirección" %}</th>
+                                    <td>{{ user.profile.address }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-4">
+                        <img class="img-thumbnail" src="{{ user.profile.image.url }}" alt="profile-image">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% include 'public/footer.html' %}
+{% endblock %}

@@ -1,0 +1,125 @@
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% include 'public/base.html' %}
+
+{% block content %}
+<section class="section_ps home_register_ps form-register font-black">
+    <div class="container mt-5 center-text card">
+        <h1 class="m-3">{% translate "Venta de Platillos" %}</h1>
+        <form id="food-form" method="post">
+            {% csrf_token %}
+            {{ sales_form|crispy }}
+            {{ formset.management_form }}
+            <div id="food-forms">
+                {% for form in formset %}
+                <div class="food-form card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">{% translate "Platillo" %} {{ forloop.counter }}</h5>
+                        {% for field in form.visible_fields %}
+                        {% if field.name != 'delete_food' %}
+                        <div class="form-group">
+                            {{ field.label_tag }}
+                            {{ field }}
+                            {% if field.errors %}
+                            <div class="invalid-feedback">
+                                {{ field.errors }}
+                            </div>
+                            {% endif %}
+                        </div>
+                        {% else %}
+                        <div class="form-check">
+                            {{ field }}
+                            <label class="form-check-label" for="{{ field.id_for_label }}">
+                                {% translate "Eliminar"%}
+                            </label>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                        {% for hidden in form.hidden_fields %}
+                        {{ hidden }}
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <button type="button" id="add-food" class="btn btn-secondary mt-2 mb-2">
+                {% translate "Agregar otro platillo"%}
+            </button>
+            <button type="submit" class="btn btn-primary">{% translate "Registrar Venta" %}</button>
+        </form>
+    </div>
+
+    <div id="empty-form" style="display:none">
+        <div class="food-form card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">{% translate "Nuevo Platillo" %}</h5>
+                {{ empty_form|crispy }}
+            </div>
+        </div>
+    </div>
+</section>
+{% include 'public/footer.html' %}
+
+<script>
+    $(document).ready(function () {
+        $('#food-form').submit(function (e) {
+            e.preventDefault();
+
+            let formValid = true;
+
+            // Verificar cada formulario de comida visible
+            $('.food-form:visible').each(function (index, form) {
+                const mealSelect = $(form).find('select[name^="meals"][name$="meal"]').val();
+
+                if (mealSelect === '') {
+                    formValid = false;
+                }
+            });
+
+            if (!formValid) {
+
+                alert('{% translate "Los campos del formulario no se llenaron correctamente." %}');
+                return;
+            }
+
+            // Si los formularios estan completos
+            $.ajax({
+                url: $(this).attr('action'),
+                type: 'POST',
+                data: $(this).serialize(),
+                dataType: 'json',
+                success: function (response) {
+                    if (response.success) {
+                        window.location.href = response.redirect_url;
+                    } else {
+                        for (var key in response.errors) {
+                            var field = $('#' + key);
+                            field.addClass('is-invalid');
+                            field.siblings('.invalid-feedback').text(response.errors[key]);
+                        }
+                    }
+                },
+                error: function (xhr) {
+                    var response = xhr.responseJSON;
+                    if (response && response.error && response.no_exist_passenger) {
+                        alert('{% translate "Pasajero no existe. Por favor, contacte a soporte" %}');
+                    } else {
+                        if (response && response.empty_form) {
+                            alert('{% translate "Todos los platillos tiene marca para eliminar" %}');
+                        } else {
+                            alert('{% translate "Ocurrio un error inesperado intente nuevamente" %}');
+                        }
+                    }
+                }
+            });
+        });
+
+        $('#add-food').click(function () {
+            var form_idx = $('#id_meals-TOTAL_FORMS').val();
+            var empty_form_html = $('#empty-form').html().replace(/__prefix__/g, form_idx);
+            $('#food-forms').append(empty_form_html);
+            $('#id_meals-TOTAL_FORMS').val(parseInt(form_idx) + 1);
+        });
+    });
+</script>
+{% endblock %}
